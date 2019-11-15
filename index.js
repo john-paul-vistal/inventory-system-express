@@ -72,7 +72,7 @@ const Rider = require('./models/rider.model');
 // Question 9 - Create a HTTP Request to fetch all the motorcycles associate to one rider:
 
 
-// BONUS 10 - Create a HTTP Request to to get the riders
+// BONUS 10 - Create a HTTP Request to to get the riders ranking
 
 
 //
