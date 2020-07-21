@@ -1,6 +1,6 @@
 # MongoDB Exercise project
 
-This project is an exercise for understand and manipulate HTTP Requests connected to MongoDB.
+This project is an exercise to understand and handle HTTP Requests connected to MongoDB.
 
 ## Set up the project
 
