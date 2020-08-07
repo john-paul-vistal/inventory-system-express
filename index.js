@@ -56,7 +56,6 @@ app.post('/riders', (req, res) => {
         if (err) {
             res.send(err);
         }
-        res.send('Rider Added Successfully!')
         res.json(rider);
     });
 });
@@ -85,11 +84,10 @@ app.get('/riders/:id', (req, res) => {
 // Question 4 - Create a HTTP Request to update firstName or/and lastName of a rider :
 app.put('/riders/:id', (req, res) => {
     let infoTOUpdate = req.body;
-    Rider.findByIdAndUpdate(req.params.id, infoTOUpdate, (err, updatedRider) => {
+    Rider.findByIdAndUpdate(req.params.id, infoTOUpdate, { new: true }, (err, updatedRider) => {
         if (err) {
             res.send(err)
         }
-        res.send('Updated Successfully!')
         res.json(updatedRider)
     });
 });
@@ -97,12 +95,11 @@ app.put('/riders/:id', (req, res) => {
 // Question 5 - Create a HTTP Request to ADD score of a rider :
 app.put('/riders/score/:id', (req, res) => {
     let infoTOUpdate = req.body;
-    Rider.findByIdAndUpdate(req.params.id, infoTOUpdate, (err, updatedRider) => {
+    Rider.findByIdAndUpdate(req.params.id, { $push: { score: infoTOUpdate.score } }, { new: true }, (err, updatedRiderscore) => {
         if (err) {
             res.send(err)
         }
-        res.send('Score Added Successfully!')
-        res.json(updatedRider)
+        res.json(updatedRiderscore)
     });
 });
 
@@ -112,26 +109,36 @@ app.delete('/riders/:id', (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.send('Deleted Successfully!')
+        res.send('DELETED!')
     });
 });
 
 // Question 7 - Create a HTTP Request to create motorcycles :
 // For create a motorcycle you will need to create the model first.
 app.post('/motorcycles', (req, res) => {
-    let motorToCreate = new Motorcycle({
-        manufacturer: req.body.manufacturer,
-        displacement: req.body.displacement,
-        weight: req.body.weight,
-        riderId: req.body.riderId,
-    });
-    motorToCreate.save((err, motorcycle) => {
+    Rider.find({}, (err, riders) => {
         if (err) {
             res.send(err);
         }
-        res.send('Motorcycle Added Successfully!')
-        res.json(motorcycle);
+        let found = riders.find(element => element._id == req.body.riderId);
+        if (found == undefined) {
+            res.send('ITEM NOT FOUND');
+        } else {
+            let motorToCreate = new Motorcycle({
+                manufacturer: req.body.manufacturer,
+                displacement: req.body.displacement,
+                weight: req.body.weight,
+                riderId: req.body.riderId,
+            });
+            motorToCreate.save((err, motorcycle) => {
+                if (err) {
+                    res.send(err);
+                }
+                res.json(motorcycle);
+            });
+        }
     });
+
 });
 
 
@@ -158,7 +165,22 @@ app.get('/motorcycles/:riderid', (req, res) => {
 
 
 // BONUS 10 - Create a HTTP Request to to get the riders ranking
-
+app.get('/toprank', (req, res) => {
+    Rider.find({}, (err, riders) => {
+        if (err) {
+            res.send(err)
+        }
+        let addedScores = [];
+        riders.forEach(element => {
+            var sum = element.score.reduce(function(a, b) {
+                return a + b;
+            }, 0);
+            addedScores.push(sum)
+        });
+        let highest = riders[addedScores.indexOf(Math.max(...addedScores))]
+        res.json({ TOP: highest })
+    });
+});
 
 //
 // End of the exercise
