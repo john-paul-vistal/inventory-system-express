@@ -7,7 +7,12 @@ const Schema = mongoose.Schema;
 // displacement (example: 1000cc, 765cc or 250 cc, this variable can be just a number)
 // weight
 // riderId
-
-
+let motorcycleSchema = new Schema({
+    manufacturer: { type: String, required: true },
+    displacement: { type: String, required: true },
+    weight: { type: String, required: true },
+    riderId: { type: String, required: true },
+});
 
 // Don't forget to export the Rider model :
+module.exports = mongoose.model('Motorcycle', motorcycleSchema);
