@@ -57,7 +57,7 @@
                                 class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
 
                     <a style="text-decoration:none;color:white" href="/products"><button
-                            class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-box-open w3-margin-right"></i>Product</button></a>
 
                     <a style="text-decoration:none;color:white" href="/stocks"><button
@@ -69,7 +69,7 @@
                                 class="fa fa-bar-chart w3-margin-right"></i>Sales</button></a>
 
                     <a style="text-decoration:none;color:white" href="/users"><button
-                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                            class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-user w3-margin-right"></i>Users</button></a>
 
                 </div>
@@ -83,50 +83,31 @@
         <!-- Page content -->
         <div id="page-content-wrapper">
             <div class="container">
-                <h3 class="d-inline">PRODUCT RECORDS</h3>
-                <a class="d-inline" href="/add-product"><button type="button"
-                        class="btn btn-primary mt-2 mb-2 py-3 float-right">Add
-                        Product</button></a>
-
-                <div class="my-2">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search Product"
-                            aria-describedby="basic-addon2">
-                        <div class="input-group-append ">
-                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-
-                    <a class="btn btn-secondary dropdown-toggle px-4 mb-2" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Bags</a>
-                        <a class="dropdown-item" href="#">Shoes</a>
-                        <a class="dropdown-item" href="#">T-shirts</a>
-                    </div>
-                </div>
-
                 <div class="row mt-2">
-                    {{#each products}}
-                    <div class="col-md-3 my-2">
-                        <div class="card-counter w3-white" style="width:230px;height:230px;">
-                            <a href="product/{{this._id}}" style="text-decoration:none;color:#202020">
-                                <div class="card-body">
-                                    <img class="mx-auto d-block" src="./img/product/product.png"
-                                        alt="{{this.product_name}}" style="width:150px">
-                                    <p style="line-height: 5px;">115566</p>
-                                    <p style="line-height: 2px;"><b>{{this.product_name}}</b></p>
-                                    <p style="line-height: 2px;">{{this.brand}}</p>
-                                </div>
-                            </a>
+                    <div class="col-md-4">
+                        <div class="card-counter user-info w3-deep-purple admins" style="width:310px;height:385px">
+                            <img style="height:170px" class="card-img-top rounded-top" src="/img/cover.jpg"
+                                alt="Card image cap">
+                            <img class="rounded-circle ml-2 shadow bg-white p-1"
+                                style="width:120px;height:120px;position:relative;top:-60px;margin-bottom:0"
+                                src="/img/default1.jpg" alt="profile">
+                            <div class="mr-1 mt-1" style="float:right">
+                                <p class="p-2 btn-danger rounded-circle fa fa-google w3-large"></p>
+                                <p class="p-2 btn-primary rounded-circle fa fa-instagram w3-large"></p>
+                                <p class="p-2 btn-success rounded-circle fa fa-linkedin w3-large"></p>
+                                <p class="p-2 btn-info rounded-circle fa fa-twitter w3-large"></p>
+                            </div>
+                            <div style="margin-top:-70px" class="card-body text-left">
+                                <h4 class="name"><b>John Paul Vistal</b></h4>
+                                <p style="line-height:8px">johnpaulvistal@gmail.com</p>
+                                <p style="line-height:8px">Admin</p>
+                            </div>
+                            <div style="margin-top:-8px" class="card-footer text-right">
+                                <a href="user-info.php?id=<?php echo $data['id']?>">MORE INFO</a>
+                            </div>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
-
             </div>
         </div>
     </div>

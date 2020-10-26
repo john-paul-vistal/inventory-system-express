@@ -23,27 +23,10 @@ const get_product = (req, res) => {
             res.send(err)
         }
         res.render('product_view', {
-            product: product,
-            title: "Product Information",
-            buttonTitle: "Update",
-            buttonColor: "btn-warning",
-            method: "put",
-            action: "/product/{{product.id}}"
+            product: product
         });
     });
 
-}
-
-
-//call add_form
-const call_form = (req, res) => {
-    res.render('product_form', {
-        title: "Add Product",
-        buttonTitle: "Save",
-        buttonColor: "btn-primary",
-        method: "post",
-        action: "/product"
-    })
 }
 
 //save_products
@@ -94,6 +77,5 @@ module.exports = {
     get_product,
     add_product,
     update_product,
-    delete_product,
-    call_form
+    delete_product
 }

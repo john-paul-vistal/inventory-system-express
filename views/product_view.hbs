@@ -39,40 +39,50 @@
             </div>
 
             <div class="col-md-7 mt-5 ml-5">
-                <div class="ml-3">
-                    <input class="info-input" type="text" id="prodNum" value="PRODUCT # : 115566" readonly>
-                   
-                    <div style="white-space:nowrap">
-                         <input id="prodName" style="font-size: 30px;width:75%" class="info-input" type="text" 
-                        value="{{product.product_name}}" readonly />
-                    </div>
-                    <div style="white-space:nowrap">
-                        <label style="font-size: 25px;"><b><i class="fa fa-tag"></i></b></label>
-                        <input style="width: 70%;"  id="brand"  class="info-input" type="text" value ="{{product.brand}}" readonly>
-                    </div>
-                    <div style="white-space:nowrap">
-                        <label style="font-size: 25px;"><b>&#8369;</b></label>
-                        <input style="width: 71%;" id="price" class="info-input" type="text" value="1500" readonly>
-                    </div>
-                    <div style="white-space:nowrap">
-                        <label><b><i style="font-size: 25px;" class="fas fa-calendar-check"></i></b> Created at: </label>
-                        <input id="createdAt" class="info-input" type="text" value ="10-12-2020" readonly>
-                    </div>
-                    <div style="white-space:nowrap">
-                        <label><b><i style="font-size: 25px;" class="fas fa-clock"></i></b> Updated at: </label>
-                        <input id="updatedAt" class="info-input" type="text" value ="10-12-2020" readonly>
-                    </div>
-                    <hr>
-                    <p>IN STOCK</p>
-                    <p><i style="font-size:25px" class="fa fa-th"></i> 100</p>
-                    <hr>
-                    <div class="float-right">
-                        <button type="button" class="btn btn-danger mx-2 px-4 py-2">Delete</button>
-                        <button id="edit" type="button" class="btn btn-warning mx-2 px-4 py-2">Edit</button>
-                    </div>
-                </div>
+                <form action="/product/{{product.id}}" method="post">
+                    <input type="hidden" name="_id" value="{{product.id}}">
+                    <div class="ml-3">
+                        <input class="info-input" type="text" id="prodNum" value="PRODUCT # : 115566" readonly>
+
+                        <div class="mt-2" style="white-space:nowrap">
+                            <input id="prodName" name="product_name" style="font-size: 30px;width:75%" class="info-input" type="text"
+                                value="{{product.product_name}}" readonly />
+                        </div>
+                        <div class="mt-2" style="white-space:nowrap">
+                            <label style="font-size: 25px;"><b><i class="fa fa-tag"></i></b></label>
+                            <input name="brand" style="width: 70%;" id="brand" class="info-input" type="text"
+                                value="{{product.brand}}" readonly>
+                        </div>
+                        <div class="mt-2" style="white-space:nowrap">
+                            <label style="font-size: 25px;"><b>&#8369;</b></label>
+                            <input style="width: 71%;" id="price" class="info-input" type="text" value="1500" readonly>
+                        </div>
+                        <div class="mt-2" style="white-space:nowrap">
+                            <label><b><i style="font-size: 25px;" class="fas fa-calendar-check"></i></b> Created at:
+                            </label>
+                            <input id="createdAt" class="info-input" type="text" value="10-12-2020" readonly>
+                        </div>
+                        <div class="mt-2" style="white-space:nowrap">
+                            <label><b><i style="font-size: 25px;" class="fas fa-clock"></i></b> Updated at: </label>
+                            <input id="updatedAt" class="info-input" type="text" value="10-12-2020" readonly>
+                        </div>
+                        <hr>
+                        <p>IN STOCK</p>
+                        <div class="mt-2" style="white-space:nowrap">
+                            <label><b><i style="font-size: 25px;" class="fa fa-th"></i></b> Quantity: </label>
+                            <input name="qty" style="width: 55%;" id="qty" class="info-input" type="text" value="{{product.qty}}"
+                                readonly>
+                        </div>
+                        <hr>
+                        <div class="float-right">
+                            <a href="/product/delete/{{product._id}}" onclick="return confirm('Are you sure you want to delete?')" type="button" class="btn btn-danger mx-2 px-4 py-2">Delete</a>
+                            <button id="edit" type="button" class="btn btn-warning mx-2 px-4 py-2">Edit</button>
+                            <button style="display:none" id="update" type="submit" class="btn btn-warning mx-2 px-4 py-2">Update</button>
+                        </div>
+                </form>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

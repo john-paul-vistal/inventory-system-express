@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System App</title>
+    <link rel="icon" href="./img/logo.png">
+
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/w3css.css">
+
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="./css/bootstrap/bootstrapcss.css">
+    <script src="./css/bootstrap/bootstrapjquery.js"></script>
+    <script src="./css/bootstrap/bootstrapproper.js"></script>
+    <script src="./css/bootstrap/bootstrap.js"></script>
+
+    {{!-- custom script --}}
+    <script src="./js/script.js"></script>
+
+    {{!-- links --}}
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+  <div class="container " style="min-width:500px;margin-top: 90px;">
+        <div class="shadow-lg px-4  mx-auto my-5 w3-animate-opacity" style="width:500px;height:650px;border-radius: 1.5%;background:linear-gradient(#3d3bc5,#4b0cf8);">
+            <div class=" box mt-5 text-white">
+                <hr>
+                <h3>SIGN IN</h3>
+                <div class="mb-5 text-center">
+                    <img src="/img/default1.jpg" class="rounded-circle" alt="Profile" style="width:200px;height: 200px;padding: 10px;background:linear-gradient(#2193b0, #6dd5ed);">
+                </div>
+                <form action="/dashboard" action="post">
+                    <div class="inputBox">
+                        <input type="text" name="username" value="">
+                        <div class="line"></div>
+                        <label><i class="fa fa-user"></i>&nbsp;Username</label>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" value="">
+                        <div class="line"></div>
+                        <label><i class="fa fa-lock "></i>&nbsp;Password</label>
+                    </div>
+                    <input class="btn btn-block py-3" type="submit" name="sign-in" value="Sign In">
+                    <div class="text-danger text-center mt-4"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

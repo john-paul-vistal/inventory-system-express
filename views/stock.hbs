@@ -57,11 +57,11 @@
                                 class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
 
                     <a style="text-decoration:none;color:white" href="/products"><button
-                            class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                            class=" w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-box-open w3-margin-right"></i>Product</button></a>
 
                     <a style="text-decoration:none;color:white" href="/stocks"><button
-                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                            class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-store w3-margin-right"></i>Stock</button></a>
 
                     <a style="text-decoration:none;color:white" href="/sales"><button
@@ -82,54 +82,44 @@
 
         <!-- Page content -->
         <div id="page-content-wrapper">
-            <div class="container">
-                <h3 class="d-inline">PRODUCT RECORDS</h3>
-                <a class="d-inline" href="/add-product"><button type="button"
-                        class="btn btn-primary mt-2 mb-2 py-3 float-right">Add
-                        Product</button></a>
-
-                <div class="my-2">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search Product"
-                            aria-describedby="basic-addon2">
-                        <div class="input-group-append ">
-                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+            <div class="page-content">
+                <div class="container">
+                    <div class="float-right">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                            </div>
                         </div>
                     </div>
-
-                    <a class="btn btn-secondary dropdown-toggle px-4 mb-2" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Bags</a>
-                        <a class="dropdown-item" href="#">Shoes</a>
-                        <a class="dropdown-item" href="#">T-shirts</a>
-                    </div>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Product #</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Date Created</th>
+                                <th>Date Updated</th>
+                                <th>Stock In</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <td>115566</td>
+                                <td>{{this.product_name}}</td>
+                                <td>{{this.qty}}</td>
+                                <td>10-12-2020</td>
+                                <td>10-12-2020</td>
+                                <td><button class="btn btn-sm btn-primary px-3">+</button></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="row mt-2">
-                    {{#each products}}
-                    <div class="col-md-3 my-2">
-                        <div class="card-counter w3-white" style="width:230px;height:230px;">
-                            <a href="product/{{this._id}}" style="text-decoration:none;color:#202020">
-                                <div class="card-body">
-                                    <img class="mx-auto d-block" src="./img/product/product.png"
-                                        alt="{{this.product_name}}" style="width:150px">
-                                    <p style="line-height: 5px;">115566</p>
-                                    <p style="line-height: 2px;"><b>{{this.product_name}}</b></p>
-                                    <p style="line-height: 2px;">{{this.brand}}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-
             </div>
         </div>
-    </div>
 </body>
 
 </html>

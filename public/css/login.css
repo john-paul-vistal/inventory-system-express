@@ -60,7 +60,7 @@ html {
     background-color: #1cb1f5;
 }
 
-@-webkit-keyframes autofill {
+@keyframes autofill {
     0%,
     100% {
         color: rgb(255, 255, 255);
@@ -69,9 +69,9 @@ html {
 }
 
 input:-webkit-autofill {
-    -webkit-animation-delay: 1s;
-    -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
+    animation-delay: 1s;
+    animation-name: autofill;
+    animation-fill-mode: both;
 }
 
 .label {

@@ -22,7 +22,7 @@ $(document).ready(function() {
             confirmButtonText: 'Logout'
         }).then((result) => {
             if (result.value == true) {
-                window.location = "logout.php";
+                window.location = "/";
             }
         })
     });
@@ -103,7 +103,11 @@ $(document).ready(function() {
 
 
     $('#edit').on('click', function() {
-        $('#edit').text("Update")
+
+        $('#edit').css('display', 'none')
+
+        $('#update').css("display", "inline")
+
         $('#prodName').addClass('editable')
         $('#prodName').attr('readonly', false)
 
@@ -113,10 +117,9 @@ $(document).ready(function() {
         $('#price').addClass('editable')
         $('#price').attr('readonly', false)
 
-        $('#prodName').addClass('editable')
-        $('#prodName').attr('readonly', false)
+        $('#qty').addClass('editable')
+        $('#qty').attr('readonly', false)
 
     });
-
 
 }); //end code
