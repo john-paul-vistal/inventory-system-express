@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System App</title>
+    <link rel="icon" href="./img/logo.png">
+
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="./css/dash-card.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/w3css.css">
+
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="./css/bootstrap/bootstrapcss.css">
+    <script src="./css/bootstrap/bootstrapjquery.js"></script>
+    <script src="./css/bootstrap/bootstrapproper.js"></script>
+    <script src="./css/bootstrap/bootstrap.js"></script>
+
+    {{!-- custom script --}}
+    <script src="./js/script.js"></script>
+
+    {{!-- links --}}
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav id="header" class="navbar navbar-inverse navbar-fixed-top w3-deep-purple fixed-top" role="navigation">
+            <a id="menu-toggle" href="#" class="btn toggle w3-hover-teal ml-3">
+                <i class="fa fa-bars"></i>
+            </a>
+            <img src="./img/logo.png" alt="Logo" style="width:50px;">
+            <div class="d-flex justify-content-end">
+                <a href="#" class="btn text-white w3-hover-blue"><i class="fa fa-bell"></i></a>
+                <a href="#" class="btn text-white w3-hover-yellow"><i class="fa fa-cog"></i></a>
+                <a id="logout" class="btn text-white w3-hover-red"><i class="fa fa-power-off"></i></a>
+            </div>
+        </nav>
+
+        <div id="sidebar-wrapper">
+            <nav class="sidebar-nav">
+                <div class="py-4" style="border-bottom:1px solid gray;">
+                    <img src="./img/default1.jpg" class="rounded-circle shadow-sm mx-auto d-block bg-white p-1"
+                        alt="Profile" style="width:155px;height:155px">
+                    <h3 class="text-white text-center">JOHN PAUL VISTAL</h3>
+                    <p style="line-height:5px" class="text-white text-center">ADMIN</p>
+                </div>
+                <div class="w3-bar-block m-2 text-white">
+                    <a style="text-decoration:none;color:white" href="#"><button
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                                class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
+
+                    <a style="text-decoration:none;color:white" href="#"><button
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                                class="fas fa-box-open w3-margin-right"></i>Product</button></a>
+
+                    <a style="text-decoration:none;color:white" href="#"><button
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                                class="fas fa-store w3-margin-right"></i>Stock</button></a>
+
+                    <a style="text-decoration:none;color:white" href="#"><button
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                                class="fa fa-bar-chart w3-margin-right"></i>Sales</button></a>
+
+                    <a style="text-decoration:none;color:white" href="#"><button
+                            class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
+                                class="fa fa-user w3-margin-right"></i>Admin</button></a>
+
+                </div>
+                <div class="sidebar-footer card-footer">
+                    <span class="text-white w3-small">&copy; Copyright 2020, John Paul Vistal</span>
+                </div>
+            </nav>
+        </div>
+
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="container">
+                <h3 class="d-inline">PRODUCT RECORDS</h3>
+                <a class="d-inline" href="/add-product"><button type="button"
+                        class="btn btn-primary mt-2 mb-2 py-3 float-right">Add
+                        Product</button></a>
+
+                <div class="my-2">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search Product"
+                            aria-describedby="basic-addon2">
+                        <div class="input-group-append ">
+                            <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-secondary dropdown-toggle px-4 mb-2" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Bags</a>
+                        <a class="dropdown-item" href="#">Shoes</a>
+                        <a class="dropdown-item" href="#">T-shirts</a>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    {{#each products}}
+                    <div class="col-md-3 my-2">
+                        <div class="card-counter w3-white" style="width:230px;height:230px;">
+                            <a href="product/{{this._id}}" style="text-decoration:none;color:#202020">
+                                <div class="card-body">
+                                    <img class="mx-auto d-block" src="./img/product/product.png"
+                                        alt="{{this.product_name}}" style="width:150px">
+                                    <p>{{this.product_name}}</p>
+                                    <p>{{this.brand}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
