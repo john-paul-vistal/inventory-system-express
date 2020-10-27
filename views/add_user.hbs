@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System App</title>
+    <link rel="icon" href="../img/logo.png">
+
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="../css/dash-card.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/w3css.css">
+
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="../css/bootstrap/bootstrapcss.css">
+    <script src="../css/bootstrap/bootstrapjquery.js"></script>
+    <script src="../css/bootstrap/bootstrapproper.js"></script>
+    <script src="../css/bootstrap/bootstrap.js"></script>
+
+    {{!-- custom script --}}
+    <script src="../js/script.js"></script>
+
+    {{!-- links --}}
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container mt-3 border">
+        <div class="row">
+            <div class="col-md-12 text-right mt-5">
+                <a href="index.html"><button class="btn btn-secondary px-5 py-2 ">Back</button></a>
+            </div>
+            <div class="col-md-4 imgUp ml-5">
+                <div class="imagePreview"></div>
+                <label class="btn btn-info">
+                    Upload Image<input type="file" class="uploadFile img uploadButton " value="Upload Photo">
+                </label>
+            </div>
+            <div class="col-md-7">
+                <form>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Username</label>
+                        <input type="text" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Password</label>
+                        <input type="password" class="form-control" aria-describedby="passwordHelpBlock"
+                            placeholder="Password" required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            Your password must be 8-20 characters long.
+                        </small>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Fullname</label>
+                        <input type="text" class="form-control" placeholder="Fullname" required>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Position</label>
+                        <select class="form-control">
+                            <option>Manager</option>
+                            <option>Admin</option>
+                            <option>Cashier</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <p>Select Gender</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline1">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <p>Birthdate : <input type="text" id="datepicker"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-11 text-right mb-4">
+                <a href="index.html"><button class="btn btn-success px-5 py-2" type="submit"
+                        value="Submit">Save</button></a>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
