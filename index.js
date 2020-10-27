@@ -49,11 +49,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
-
-// Import Models
-const Product = require('./models/product.model');
-
-
 //Import routes
 const productRoutes = require('./routes/productRoutes');
 app.use(productRoutes);

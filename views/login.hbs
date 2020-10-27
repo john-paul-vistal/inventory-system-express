@@ -17,12 +17,8 @@
     <script src="./css/bootstrap/bootstrapproper.js"></script>
     <script src="./css/bootstrap/bootstrap.js"></script>
 
-    {{!-- custom script --}}
-    <script src="./js/script.js"></script>
-
     {{!-- links --}}
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -37,7 +33,7 @@
                 <div class="mb-5 text-center">
                     <img src="/img/default1.jpg" class="rounded-circle" alt="Profile" style="width:200px;height: 200px;padding: 10px;background:linear-gradient(#2193b0, #6dd5ed);">
                 </div>
-                <form action="/dashboard" action="post">
+                <form action="/login" method="post">
                     <div class="inputBox">
                         <input type="text" name="username" value="">
                         <div class="line"></div>
@@ -49,7 +45,7 @@
                         <label><i class="fa fa-lock "></i>&nbsp;Password</label>
                     </div>
                     <input class="btn btn-block py-3" type="submit" name="sign-in" value="Sign In">
-                    <div class="text-danger text-center mt-4"></div>
+                    <div class="text-danger text-center mt-4">{{error}}</div>
                 </form>
             </div>
         </div>

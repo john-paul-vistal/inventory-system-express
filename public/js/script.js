@@ -22,7 +22,7 @@ $(document).ready(function() {
             confirmButtonText: 'Logout'
         }).then((result) => {
             if (result.value == true) {
-                window.location = "/";
+                window.location = "/logout";
             }
         })
     });

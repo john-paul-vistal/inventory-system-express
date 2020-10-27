@@ -20,7 +20,7 @@ html {
     letter-spacing: 0.062rem;
     margin-bottom: 1.875rem;
     border: none;
-    border-bottom: 0.065rem solid #979595;
+    border-bottom: 0.065rem solid #a8a8a8;
     outline: none;
     background: transparent;
 }
@@ -87,7 +87,7 @@ input:-webkit-autofill {
     display: inline-block;
     transition: .3s width ease-in-out;
     position: relative;
-    top: -47px;
+    top: -45px;
 }
 
 input:focus+.line,
