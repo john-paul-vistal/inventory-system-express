@@ -53,6 +53,9 @@ Router.get('/logout', viewsController.logout);
 //call users
 Router.post('/login', viewsController.verify_login);
 
+//call users
+Router.get('/add-user', viewsController.adduser_form);
+
 
 
 

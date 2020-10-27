@@ -11,21 +11,18 @@ const get_product = (req, res) => {
         if (err) {
             res.send(err)
         }
-        var cdate = new Date(product.created_at)
-        var udate = new Date(product.updated_at)
-        var created_at = cdate.getMonth() + 1 + '/' + cdate.getDate() + '/' + cdate.getFullYear() + '  ' + cdate.getHours() + ' : ' + cdate.getMinutes() + ' : ' + cdate.getSeconds();
-        var updated_at = udate.getMonth() + 1 + '/' + udate.getDate() + '/' + udate.getFullYear() + '  ' + udate.getHours() + ' : ' + udate.getMinutes() + ' : ' + udate.getSeconds();
         res.render('product_view', {
-            product: product,
-            dateCreated: created_at,
-            dateUpdated: updated_at
+            name: userLogged,
+            product: product
         });
     });
 }
 
 //save_products
 const add_product = (req, res) => {
-
+    var date = new Date(Date.now())
+    var created_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+    var updated_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
     let productToCreate = new Product({
         product_number: req.body.product_number,
         product_name: req.body.product_name,
@@ -33,9 +30,10 @@ const add_product = (req, res) => {
         price: req.body.price,
         qty: req.body.qty,
         img: req.body.img,
+        created_at: created_at,
+        updated_at: updated_at,
         created_by: req.body.created_by
     });
-    console.log(Date.now())
     productToCreate.save((err, product) => {
         if (err) {
             res.send(err);
@@ -46,8 +44,11 @@ const add_product = (req, res) => {
 
 //update_products
 const update_product = (req, res) => {
+    var date = new Date(Date.now())
+    var updated_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
 
     let infoTOUpdate = req.body;
+    infoTOUpdate.updated_at = updated_at;
 
     Product.findByIdAndUpdate(req.body._id, infoTOUpdate, { new: true }, (err, updatedProduct) => {
         if (err) {

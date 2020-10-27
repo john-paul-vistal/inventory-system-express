@@ -41,6 +41,7 @@
 
                 <div class="col-md-7 mt-5 ml-5">
                     <form action="/product/{{product.id}}" method="post">
+                        <input type="hidden" name="updated_by" id="" value="{{name}}">
                         <input type="hidden" name="_id" value="{{product.id}}">
                         <div class="ml-3">
                             <input class="info-input" type="text" id="prodNum"
@@ -68,12 +69,17 @@
                             <div class="mt-2" style="white-space:nowrap">
                                 <label><b><i style="font-size: 25px;" class="fas fa-calendar-check"></i></b> Created at:
                                 </label>
-                                <input id="createdAt" class="info-input" type="text" value="{{dateCreated}}"
+                                <input id="createdAt" class="info-input" type="text" value="{{product.created_at}}"
+                                    readonly>
+                            </div>
+                             <div class="mt-2" style="white-space:nowrap">
+                                <label><b><i style="font-size: 25px;" class="fas fa-file"></i></b> Updated by: </label>
+                                <input id="updatedAt" class="info-input" type="text" value="{{product.updated_by}}"
                                     readonly>
                             </div>
                             <div class="mt-2" style="white-space:nowrap">
                                 <label><b><i style="font-size: 25px;" class="fas fa-clock"></i></b> Updated at: </label>
-                                <input id="updatedAt" class="info-input" type="text" value="{{dateUpdated}}"
+                                <input id="updatedAt" class="info-input" type="text" value="{{product.updated_at}}"
                                     readonly>
                             </div>
                             <hr>

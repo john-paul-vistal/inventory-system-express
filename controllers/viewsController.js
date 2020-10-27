@@ -12,6 +12,8 @@ var id = null
 
 
 
+
+
 //call dashboard
 const call_dashboard = (req, res) => {
     try {
@@ -152,6 +154,7 @@ const verify_login = (req, res) => {
                 level = user.level;
                 img = user.img;
                 id = user._id;
+                userLogged = user.fullname;
 
                 res.render("dashboard", {
                     name: user.fullname,
@@ -190,6 +193,21 @@ const call_form = (req, res) => {
     }
 }
 
+const adduser_form = (req, res) => {
+    try {
+        if (logged == true) {
+            res.render('add_user', {
+                id: id,
+                name: name
+            })
+        } else {
+            res.redirect('/')
+        }
+    } catch {
+        res.redirect('/')
+    }
+}
+
 
 
 module.exports = {
@@ -201,5 +219,6 @@ module.exports = {
     call_users,
     login,
     logout,
-    verify_login
+    verify_login,
+    adduser_form
 }
