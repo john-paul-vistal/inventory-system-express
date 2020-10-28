@@ -46,10 +46,10 @@
         <div id="sidebar-wrapper">
             <nav class="sidebar-nav">
                 <div class="py-4" style="border-bottom:1px solid gray;">
-                    <img src="./img/default1.jpg" class="rounded-circle shadow-sm mx-auto d-block bg-white p-1"
+                    <img src="./img/profile/{{img}}" class="rounded-circle shadow-sm mx-auto d-block bg-white p-1"
                         alt="Profile" style="width:155px;height:155px">
-                    <h3 class="text-white text-center">JOHN PAUL VISTAL</h3>
-                    <p style="line-height:5px" class="text-white text-center">ADMIN</p>
+                    <h3 class="text-white text-center" style="text-transform: uppercase;">{{name}}</h3>
+                    <p style="line-height:5px;text-transform:uppercase" class="text-white text-center">{{level}}</p>
                 </div>
                 <div class="w3-bar-block m-2 text-white">
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
@@ -83,14 +83,25 @@
         <!-- Page content -->
         <div id="page-content-wrapper">
             <div class="container">
+                <div class="d-flex justify-content-end">
+                    <a href="/add-user"><button class="btn btn-primary px-3 py-2">Add User</button></a>
+                </div>
+                <div class="input-group mb-4 mt-2" style="width: 40%;">
+                    <input type="text" class="form-control" placeholder="Search users . . . ." aria-label="Username"
+                        aria-describedby="basic-addon1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
                 <div class="row mt-2">
+                    {{#each users}}
                     <div class="col-md-4">
                         <div class="card-counter user-info w3-deep-purple admins" style="width:310px;height:385px">
                             <img style="height:170px" class="card-img-top rounded-top" src="/img/cover.jpg"
                                 alt="Card image cap">
                             <img class="rounded-circle ml-2 shadow bg-white p-1"
                                 style="width:120px;height:120px;position:relative;top:-60px;margin-bottom:0"
-                                src="/img/default1.jpg" alt="profile">
+                                src="/img/profile/{{this.img}}" alt="profile">
                             <div class="mr-1 mt-1" style="float:right">
                                 <p class="p-2 btn-danger rounded-circle fa fa-google w3-large"></p>
                                 <p class="p-2 btn-primary rounded-circle fa fa-instagram w3-large"></p>
@@ -98,15 +109,16 @@
                                 <p class="p-2 btn-info rounded-circle fa fa-twitter w3-large"></p>
                             </div>
                             <div style="margin-top:-70px" class="card-body text-left">
-                                <h4 class="name"><b>John Paul Vistal</b></h4>
-                                <p style="line-height:8px">johnpaulvistal@gmail.com</p>
-                                <p style="line-height:8px">Admin</p>
+                                <h4 class="name"><b>{{this.fullname}}</b></h4>
+                                <p style="line-height:8px">{{this.email}}</p>
+                                <p style="line-height:8px;text-transform:uppercase">{{this.level}}</p>
                             </div>
                             <div style="margin-top:-8px" class="card-footer text-right">
-                                <a href="user-info.php?id=<?php echo $data['id']?>">MORE INFO</a>
+                                <a href="">MORE INFO</a>
                             </div>
                         </div>
                     </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

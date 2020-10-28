@@ -46,10 +46,10 @@
         <div id="sidebar-wrapper">
             <nav class="sidebar-nav">
                 <div class="py-4" style="border-bottom:1px solid gray;">
-                    <img src="./img/default1.jpg" class="rounded-circle shadow-sm mx-auto d-block bg-white p-1"
+                    <img src="./img/profile/{{img}}" class="rounded-circle shadow-sm mx-auto d-block bg-white p-1"
                         alt="Profile" style="width:155px;height:155px">
-                    <h3 class="text-white text-center">JOHN PAUL VISTAL</h3>
-                    <p style="line-height:5px" class="text-white text-center">ADMIN</p>
+                    <h3 class="text-white text-center" style="text-transform: uppercase;">{{name}}</h3>
+                    <p style="line-height:5px;text-transform:uppercase" class="text-white text-center">{{level}}</p>
                 </div>
                 <div class="w3-bar-block m-2 text-white">
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
@@ -117,9 +117,9 @@
                                 <div class="card-body">
                                     <img class="mx-auto d-block" src="./img/product/product.png"
                                         alt="{{this.product_name}}" style="width:150px">
-                                    <p style="line-height: 5px;">115566</p>
-                                    <p style="line-height: 2px;"><b>{{this.product_name}}</b></p>
-                                    <p style="line-height: 2px;">{{this.brand}}</p>
+                                    <p style="line-height: 10px;">{{this.product_number}}</p>
+                                    <p style="line-height: 10px;"><b>{{this.product_name}}</b></p>
+                                    <p style="line-height: 5px;">{{this.brand}}</p>
                                 </div>
                             </a>
                         </div>

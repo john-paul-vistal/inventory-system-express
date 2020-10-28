@@ -6,12 +6,7 @@ const productController = require('../controllers/productCotroller');
 const viewsController = require('../controllers/viewsController');
 
 
-
-
 // PRODUCT ROUTES
-
-//get_products
-Router.get('/products', productController.get_products);
 
 //search_product
 Router.get('/product/:id', productController.get_product);
@@ -37,6 +32,9 @@ Router.get('/add-product', viewsController.call_form);
 //call dashboard
 Router.get('/dashboard', viewsController.call_dashboard);
 
+//call_products
+Router.get('/products', viewsController.call_products);
+
 //call stock
 Router.get('/stocks', viewsController.call_stock);
 
@@ -46,8 +44,18 @@ Router.get('/sales', viewsController.call_sales);
 //call users
 Router.get('/users', viewsController.call_users);
 
-//call users
+//call login
 Router.get('/', viewsController.login);
+
+//call logout
+Router.get('/logout', viewsController.logout);
+
+//call users
+Router.post('/login', viewsController.verify_login);
+
+//call users
+Router.get('/add-user', viewsController.adduser_form);
+
 
 
 
