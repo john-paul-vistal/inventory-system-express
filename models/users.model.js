@@ -9,10 +9,10 @@ let UsersSchema = new Schema({
     fullname: { type: String, required: true },
     email: { type: String, required: true },
     gender: { type: String, required: true },
-    birthDate: { type: Date, required: true },
-    img: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
-    UpdatedAt: { type: Date, default: Date.now }
+    birthDate: { type: String, required: true },
+    img: { type: String, required: false, default: "default1.jpg" },
+    createdAt: { type: String, required: true },
+    updatedAt: { type: String, required: true }
 });
 
 // Export the Rider model

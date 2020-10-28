@@ -13,15 +13,15 @@ var id = null
 
 
 
-
 //call dashboard
 const call_dashboard = (req, res) => {
     try {
         if (logged == true) {
             res.render('dashboard', {
-                name: name,
-                level: level,
-                img: img
+                name: req.session.name,
+                level: req.session.level,
+                img: req.session.img,
+                id: req.session.id,
             });
         } else {
             res.redirect('/')
@@ -29,11 +29,13 @@ const call_dashboard = (req, res) => {
     } catch {
         res.redirect('/')
     }
+
 }
 
 
 //call_products
 const call_products = (req, res) => {
+
     Product.find({}, (err, products) => {
         if (err) {
             res.send(err)
@@ -42,9 +44,10 @@ const call_products = (req, res) => {
             if (logged == true) {
                 res.render('product', {
                     products: products,
-                    name: name,
-                    img: img,
-                    level: level
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
                 });
             } else {
                 res.redirect('/')
@@ -53,10 +56,12 @@ const call_products = (req, res) => {
             res.redirect('/')
         }
     })
+
 }
 
 //call stock 
 const call_stock = (req, res) => {
+
     Product.find({}, (err, products) => {
         if (err) {
             res.send(err)
@@ -64,16 +69,17 @@ const call_stock = (req, res) => {
         try {
             var cdate = new Date(products.created_at)
             var udate = new Date(products.updated_at)
-            var created_at = cdate.getMonth() + 1 + '/' + cdate.getDate() + '/' + cdate.getFullYear() + ' :: ' + cdate.getHours() + ' : ' + cdate.getMinutes() + ' : ' + cdate.getSeconds();
-            var updated_at = udate.getMonth() + 1 + '/' + udate.getDate() + '/' + udate.getFullYear() + ' :: ' + udate.getHours() + ' : ' + udate.getMinutes() + ' : ' + udate.getSeconds();
+            var created_at = cdate.getMonth() + 1 + '-' + cdate.getDate() + '-' + cdate.getFullYear() + ' :: ' + cdate.getHours() + ' : ' + cdate.getMinutes() + ' : ' + cdate.getSeconds();
+            var updated_at = udate.getMonth() + 1 + '-' + udate.getDate() + '-' + udate.getFullYear() + ' :: ' + udate.getHours() + ' : ' + udate.getMinutes() + ' : ' + udate.getSeconds();
             if (logged == true) {
                 res.render('stock', {
                     products: products,
                     created_at: created_at,
                     updated_at: updated_at,
-                    name: name,
-                    level: level,
-                    img: img
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
                 });
             } else {
                 res.redirect('/')
@@ -82,16 +88,19 @@ const call_stock = (req, res) => {
             res.redirect('/')
         }
     })
+
 }
 
 //call sales 
 const call_sales = (req, res) => {
+
     try {
         if (logged == true) {
             res.render('sales', {
-                name: name,
-                level: level,
-                img: img
+                name: req.session.name,
+                level: req.session.level,
+                img: req.session.img,
+                id: req.session.id,
             });
         } else {
             res.redirect('/')
@@ -99,6 +108,7 @@ const call_sales = (req, res) => {
     } catch {
         res.redirect('/')
     }
+
 }
 
 //call users 
@@ -112,9 +122,10 @@ const call_users = (req, res) => {
             if (logged == true) {
                 res.render('users', {
                     users: users,
-                    name: name,
-                    level: level,
-                    img: img
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
                 });
             } else {
                 res.redirect('/')
@@ -131,10 +142,18 @@ const login = (req, res) => {
     res.render('login');
 }
 
+
 const logout = (req, res) => {
     logged = false
-    res.redirect('/')
+    req.session.destroy(function(err) {
+        if (err) {
+            res.negotiate(err)
+        }
+        res.redirect('/')
+    });
 }
+
+
 
 //login verification
 const verify_login = (req, res) => {
@@ -149,17 +168,19 @@ const verify_login = (req, res) => {
 
         if (user != null) {
             if (user.username == username && user.password == password) {
-                logged = true
-                name = user.fullname;
-                level = user.level;
-                img = user.img;
-                id = user._id;
-                userLogged = user.fullname;
+                req.session.logged = true;
+                req.session.name = user.fullname;
+                req.session.level = user.level;
+                req.session.img = user.img;
+                req.session.id = user._id;
 
-                res.render("dashboard", {
-                    name: user.fullname,
-                    level: user.level,
-                    img: user.img
+                logged = true
+
+                res.render('dashboard', {
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
                 })
             } else {
                 res.render("login", {
@@ -177,13 +198,16 @@ const verify_login = (req, res) => {
 
 
 
+
 //call add_form
 const call_form = (req, res) => {
     try {
         if (logged == true) {
             res.render('product_form', {
-                id: id,
-                name: name
+                name: req.session.name,
+                level: req.session.level,
+                img: req.session.img,
+                id: req.session.id,
             })
         } else {
             res.redirect('/')
@@ -196,9 +220,11 @@ const call_form = (req, res) => {
 const adduser_form = (req, res) => {
     try {
         if (logged == true) {
-            res.render('add_user', {
-                id: id,
-                name: name
+            res.render('user_form', {
+                name: req.session.name,
+                level: req.session.level,
+                img: req.session.img,
+                id: req.session.id,
             })
         } else {
             res.redirect('/')

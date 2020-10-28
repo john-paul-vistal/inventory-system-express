@@ -4,6 +4,7 @@ const Router = express.Router();
 
 const productController = require('../controllers/productCotroller');
 const viewsController = require('../controllers/viewsController');
+const userController = require('../controllers/userController');
 
 
 // PRODUCT ROUTES
@@ -19,6 +20,22 @@ Router.post('/product/:id', productController.update_product);
 
 //delete_product 
 Router.get('/product/delete/:id', productController.delete_product);
+
+
+
+// USERS ROUTES
+
+//search_product
+Router.get('/user/:id', userController.get_user);
+
+//add_product
+Router.post('/user', userController.add_user);
+
+//update_product
+Router.post('/user/:id', userController.update_user);
+
+//delete_product 
+Router.get('/user/delete/:id', userController.delete_user);
 
 
 

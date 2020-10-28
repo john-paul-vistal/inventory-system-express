@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System App</title>
+    <link rel="icon" href="../img/logo.png">
+
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="../css/dash-card.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/w3css.css">
+
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="../css/bootstrap/bootstrapcss.css">
+    <script src="../css/bootstrap/bootstrapjquery.js"></script>
+    <script src="../css/bootstrap/bootstrapproper.js"></script>
+    <script src="../css/bootstrap/bootstrap.js"></script>
+
+    {{!-- custom script --}}
+    <script src="../js/script.js"></script>
+
+    {{!-- links --}}
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+
+<body>
+    <div class="container mt-5 border shadow">
+        <h4 class="mt-1">USER INFORMATION</h4>
+        <div class="col-md-12 text-right mt-2 mb-4">
+            <a href="/users"><button class="btn btn-secondary px-5 py-2">Back</button></a>
+        </div>
+        <form action="/user" method="post">
+            <div class="row mt-2">
+                <div class="col-md-4 imgUp ml-5">
+                    <div class="imagePreview ml-4"></div>
+                    <label class="btn btn-info ml-4">
+                        Upload Image<input name="img" type="file" class="uploadFile img uploadButton "
+                            value="">
+                    </label>
+                </div>
+                <div class="col-md-7 mb-5">
+
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Username</label>
+                        <input name="username" type="text" class="form-control" placeholder="Username" value="" required>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Password</label>
+                        <input name="password" type="password" class="form-control" aria-describedby="passwordHelpBlock"
+                            placeholder="Password" value="" required>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            Your password must be 8-20 characters long.
+                        </small>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Fullname</label>
+                        <input name="fullname" type="text" class="form-control" placeholder="Fullname" value="" required>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Email</label>
+                        <input name="email" type="email" class="form-control" placeholder="Fullname" value="" required>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Position</label>
+                        <select name="level" class="form-control">
+                            <option value="Manager">Manager</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Cashier">Cashier</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-10 mb-2 ml-5">
+                        <label for="">Gender</label>
+                        <select name="gender" class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <p>Birthdate : <input name="birthDate" type="date" id="datepicker"
+                                style="padding:3px;width:80%;border:1px solid #b1afaf"></p>
+                    </div>
+                    <div class="col-md-11 text-right mb-4">
+                        <button class="btn btn-success px-5 py-2 mt-4" type="submit" value="Submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

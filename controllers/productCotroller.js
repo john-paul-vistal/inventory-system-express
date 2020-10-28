@@ -12,8 +12,8 @@ const get_product = (req, res) => {
             res.send(err)
         }
         res.render('product_view', {
-            name: userLogged,
-            product: product
+            product: product,
+            name: req.session.name
         });
     });
 }
@@ -21,8 +21,8 @@ const get_product = (req, res) => {
 //save_products
 const add_product = (req, res) => {
     var date = new Date(Date.now())
-    var created_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
-    var updated_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+    var created_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+    var updated_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
     let productToCreate = new Product({
         product_number: req.body.product_number,
         product_name: req.body.product_name,
@@ -32,7 +32,8 @@ const add_product = (req, res) => {
         img: req.body.img,
         created_at: created_at,
         updated_at: updated_at,
-        created_by: req.body.created_by
+        created_by: req.body.created_by,
+        updated_by: req.body.updated_by
     });
     productToCreate.save((err, product) => {
         if (err) {
@@ -45,7 +46,7 @@ const add_product = (req, res) => {
 //update_products
 const update_product = (req, res) => {
     var date = new Date(Date.now())
-    var updated_at = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+    var updated_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
 
     let infoTOUpdate = req.body;
     infoTOUpdate.updated_at = updated_at;

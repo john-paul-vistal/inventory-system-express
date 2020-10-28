@@ -1,11 +1,13 @@
 // Configuration part
 // ------------------------------------------------------------
 const express = require('express');
+var session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const port = 8000
+
 
 // Create express app
 const app = express();
@@ -18,6 +20,8 @@ app.use(express.json())
 app.use(express.static("public"))
 app.set("views", "views")
 app.set("view engine", "hbs")
+
+
 
 
 
@@ -47,7 +51,9 @@ var db = mongoose.connection;
 // Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var userLogged
+//Initialize session
+app.use(session({ secret: "admin123", resave: true, saveUninitialized: true }));
+
 
 //Import routes
 const productRoutes = require('./routes/productRoutes');
