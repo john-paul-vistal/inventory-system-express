@@ -415,11 +415,10 @@ ul li {
 /* ADD USER */
 
 .imagePreview {
-    width: 230px;
+    width: 250px;
     height: 230px;
     background-position: center center;
     background:url(default1.jpg);
-    background-color:#fff;
     background-size: cover;
     background-repeat:no-repeat;
     display: inline-block;
@@ -456,9 +455,7 @@ ul li {
     font-size:15px;
   }
   .uploadButton{
-    width: 205px;
     height: 0px;
     border-radius:0px;
     overflow: hidden;
-    display:block;
   }
