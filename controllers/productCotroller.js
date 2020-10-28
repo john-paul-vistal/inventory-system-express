@@ -32,8 +32,8 @@ const add_product = (req, res) => {
         img: req.body.img,
         created_at: created_at,
         updated_at: updated_at,
-        created_by: req.body.created_by,
-        updated_by: req.body.updated_by
+        created_by: req.body.userlogged,
+        updated_by: req.body.userlogged
     });
     productToCreate.save((err, product) => {
         if (err) {

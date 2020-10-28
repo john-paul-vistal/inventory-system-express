@@ -12,7 +12,8 @@ const port = 8000
 // Create express app
 const app = express();
 
-const Handlebars = require('handlebars')
+const Handlebars = require('hbs')
+
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 app.use(express.urlencoded({ extended: false }))
@@ -20,12 +21,6 @@ app.use(express.json())
 app.use(express.static("public"))
 app.set("views", "views")
 app.set("view engine", "hbs")
-
-
-
-
-
-
 
 
 // Parse requests of content-type - application/x-www-form-urlencoded
@@ -53,6 +48,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Initialize session
 app.use(session({ secret: "admin123", resave: true, saveUninitialized: true }));
+
+
+Handlebars.registerHelper('ifEquals', function(val, options) {
+    var fnTrue = options.fn,
+        fnFalse = options.inverse;
+
+    return val == "Admin" ? fnTrue() : fnFalse();
+});
+
+
 
 
 //Import routes

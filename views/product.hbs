@@ -83,21 +83,21 @@
         <!-- Page content -->
         <div id="page-content-wrapper">
             <div class="container">
-                <h3 class="d-inline">PRODUCT RECORDS</h3>
                 <a class="d-inline" href="/add-product"><button type="button"
                         class="btn btn-primary mt-2 mb-2 py-2 px-4 float-right">Add
                         Product</button></a>
+                <h3 class="d-inline">PRODUCT RECORDS</h3>
 
-                <div class="my-2">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search Product"
+                <div class="mt-5 mb-2">
+                    <div style="width:50%" class="float-right input-group">
+                        <input type="text" class="form-control" placeholder="Search Product . . ."
                             aria-describedby="basic-addon2">
                         <div class="input-group-append ">
                             <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
                         </div>
                     </div>
 
-                    <a class="btn btn-secondary dropdown-toggle px-4 mb-2" href="#" role="button" id="dropdownMenuLink"
+                    <a style="margin-top: 2.5px;" class="btn btn-outline-primary dropdown-toggle px-5 mb-2" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
                     </a>
@@ -108,15 +108,15 @@
                         <a class="dropdown-item" href="#">T-shirts</a>
                     </div>
                 </div>
-
-                <div class="row mt-2">
+                <hr>
+                <div class="row mt-1">
                     {{#each products}}
                     <div class="col-md-3 my-2">
-                        <div class="card-counter w3-white" style="width:230px;height:230px;">
+                        <div class="card-counter w3-white" style="width:230px;height:250px;">
                             <a href="product/{{this._id}}" style="text-decoration:none;color:#202020">
                                 <div class="card-body">
-                                    <img class="mx-auto d-block" src="./img/product/product.png"
-                                        alt="{{this.product_name}}" style="width:150px">
+                                    <img class="mx-auto d-block" src="./img/product/{{this.img}}"
+                                        alt="{{this.product_name}}" style="width:150px;height:150px">
                                     <p style="line-height: 10px;">{{this.product_number}}</p>
                                     <p style="line-height: 10px;"><b>{{this.product_name}}</b></p>
                                     <p style="line-height: 5px;">{{this.brand}}</p>

@@ -35,7 +35,7 @@
             <a href="/products"><button class="btn btn-primary px-5 py-2 float-right">Back</button></a>
             <div class="row mt-5">
                 <div class="col-md-4 mr-2">
-                    <img class="d-block mx-auto" src="../img/product/product.png" alt="{{product.product_name}}"
+                    <img class="d-block mx-auto" src="../img/product/{{product.img}}" alt="{{product.product_name}}"
                         style="width:350px">
                 </div>
 
@@ -58,7 +58,7 @@
                             </div>
                             <div class="mt-2" style="white-space:nowrap">
                                 <label style="font-size: 25px;"><b>&#8369;</b></label>
-                                <input style="width: 71%;" id="price" class="info-input" type="text" value="1500"
+                                <input style="width: 71%;" name="price" id="price" class="info-input" type="text" value="{{product.price}}"
                                     readonly>
                             </div>
                             <div class="mt-2" style="white-space:nowrap">

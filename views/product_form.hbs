@@ -30,40 +30,46 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="container justify-content-center">
-            <div class="modal-dialog modal-xl bg-info">
-                <div class="modal-content bg-info">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">{{title}}</h5>
-                        <a href="/products"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"><i class="fa fa-arrow-left"></i></span></button></a>
-
+    <div class="container border mt-5 ">
+        <div class="col-md-12 text-right mt-3">
+            <a href="/products"><button class="btn btn-secondary px-5 py-2 ">Back</button></a>
+        </div>
+        <form action="/product" method="post">
+            <div class="row">
+                <input type="hidden" name="product_number" value="112233">
+                <input type="hidden" name="userlogged" value="{{name}}">
+                <div class="col-md-4 imgUp ml-5">
+                    <div class="imagePreview ml-5"></div>
+                    <label class="btn btn-info ml-5">
+                        Upload Photo<input name="img" type="file" class="uploadFile img uploadButton btn-block "
+                            value="">
+                    </label>
+                </div>
+                <div class="col-md-7 mb-5">
+                    <div class="form-group col-md-9  mb-2 ml-5">
+                        <label for="">Product Name</label>
+                        <input name="product_name" type="text" class="form-control" placeholder="Product Name" required>
                     </div>
-                    <div class="modal-body px-5">
-
-                        <form action="/product" method="post">
-                            <input type="hidden" name="product_number" value="183043">
-                            <input type="hidden" name="created_by" value="{{name}}">
-                            <input type="hidden" name="updated_by" value="{{name}}">
-                            <label for="">Image</label>
-                            <input class="form-control mb-2" type="text" name="img" value="notavailable" required>
-                            <label for="">Product Name</label>
-                            <input class="form-control mb-2" type="text" name="product_name" required>
-                            <label for="">Brand</label>
-                            <input class="form-control mb-2" type="text" name="brand" required>
-                            <label for="">Price</label>
-                            <input class="form-control mb-2" type="text" name="price" required>
-                            <label for="">Quantity</label>
-                            <input class="form-control mb-2" type="text" name="qty" required>
-                            <button type="submit" class="btn btn-primary px-5 mt-3 mb-2 float-right">Save</button>
-                        </form>
-
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <label for="">Brand</label>
+                        <input name="brand" type="text" class="form-control" placeholder="Brand" required>
                     </div>
-                    <div class="modal-footer"></div>
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <label for="">Price</label>
+                        <input name="price" type="text" class="form-control" placeholder="Price" required>
+                    </div>
+                    <div class="form-group col-md-9 mb-2 ml-5">
+                        <label for="">Quantity</label>
+                        <input name="qty" type="text" class="form-control" placeholder="Quantity" required>
+                    </div>
+
+                </div>
+                <div class="col-md-11 text-right mt-3 mb-3">
+                    <a href="index.html"><button class="btn btn-success px-5 py-2 mb-3" type="submit"
+                            value="Submit">Save</button></a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 

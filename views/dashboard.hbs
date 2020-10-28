@@ -52,10 +52,11 @@
                     <p style="line-height:5px;text-transform:uppercase" class="text-white text-center">{{level}}</p>
                 </div>
                 <div class="w3-bar-block m-2 text-white">
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
                             class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
-
+                    {{/ifEquals}}
                     <a style="text-decoration:none;color:white" href="/products"><button
                             class=" w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-box-open w3-margin-right"></i>Product</button></a>

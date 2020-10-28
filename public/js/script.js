@@ -150,9 +150,6 @@ $(document).ready(function() {
 
 
 
-
-
-
     //Attach Image
     $(".imgAdd").click(function() {
         $(this).closest(".row").find('.imgAdd').before('<div class="col-md-3 imgUp"><div class="imagePreview"></div><label class="btn btn-info">Upload Image<input type="file" class="uploadFile img uploadButton" value="Upload Photo"></label></div>');
