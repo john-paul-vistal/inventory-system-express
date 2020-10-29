@@ -22,7 +22,7 @@
     <script src="./js/script.js"></script>
 
     {{!-- links --}}
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -52,10 +52,11 @@
                     <p style="line-height:5px;text-transform:uppercase" class="text-white text-center">{{level}}</p>
                 </div>
                 <div class="w3-bar-block m-2 text-white">
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
-                                class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
-
+                                class="fas fa-tachometer-alt w3-margin-right"></i>Dashboard</button></a>
+                    {{/ifEquals}}
                     <a style="text-decoration:none;color:white" href="/products"><button
                             class=" w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-box-open w3-margin-right"></i>Product</button></a>
@@ -67,11 +68,11 @@
                     <a style="text-decoration:none;color:white" href="/sales"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-bar-chart w3-margin-right"></i>Sales</button></a>
-
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/users"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-group w3-margin-right"></i>Users</button></a>
-
+                    {{/ifEquals}}
                 </div>
                 <div class="sidebar-footer card-footer">
                     <span class="text-white w3-small">&copy; Copyright 2020, John Paul Vistal</span>
@@ -85,8 +86,8 @@
             <div class="page-content">
                 <div class="container">
                     <div class="input-group mb-2 mt-2 float-right" style="width: 40%;">
-                        <input type="text" class="form-control" placeholder="Search record . . . ." aria-label="Username"
-                            aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Search record . . . ."
+                            aria-label="Username" aria-describedby="basic-addon1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                         </div>
@@ -107,7 +108,7 @@
                         <tbody>
                             {{#each products}}
                             <tr>
-                                <td>115566</td>
+                                <td>{{this.product_number}}</td>
                                 <td>{{this.product_name}}</td>
                                 <td>{{this.qty}}</td>
                                 <td>{{this.created_at}}</td>

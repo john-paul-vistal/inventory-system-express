@@ -22,8 +22,9 @@
     <script src="./js/script.js"></script>
 
     {{!-- links --}}
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -55,7 +56,7 @@
                     {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
                             class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
-                                class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
+                                class="fas fa-tachometer-alt w3-margin-right"></i>Dashboard</button></a>
                     {{/ifEquals}}
                     <a style="text-decoration:none;color:white" href="/products"><button
                             class=" w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
@@ -68,11 +69,11 @@
                     <a style="text-decoration:none;color:white" href="/sales"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-bar-chart w3-margin-right"></i>Sales</button></a>
-
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/users"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-group w3-margin-right"></i>Users</button></a>
-
+                    {{/ifEquals}}
                 </div>
                 <div class="sidebar-footer card-footer">
                     <span class="text-white w3-small">&copy; Copyright 2020, John Paul Vistal</span>
@@ -83,12 +84,12 @@
 
         <!-- Page content -->
         <div id="page-content-wrapper">
-           <div class="page-content">
+            <div class="page-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
                             <div style="height:100%" class="card-counter primary">
-                               <img style="width:350px;margin-left: 50px" src="" alt="">
+                                <img style="width:350px;margin-left: 50px" src="" alt="">
                             </div>
                         </div>
 

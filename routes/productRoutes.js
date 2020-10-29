@@ -10,6 +10,9 @@ const userController = require('../controllers/userController');
 // PRODUCT ROUTES
 
 //search_product
+Router.get('/getAllProducts', productController.get_all_products);
+
+//search_product
 Router.get('/product/:id', productController.get_product);
 
 //add_product
@@ -72,6 +75,9 @@ Router.post('/login', viewsController.verify_login);
 
 //call users
 Router.get('/add-user', viewsController.adduser_form);
+
+//call pos
+Router.get('/point-of-sale', viewsController.point_of_sale);
 
 
 

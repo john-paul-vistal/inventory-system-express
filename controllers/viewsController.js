@@ -5,12 +5,7 @@ const path = require('path');
 const { __express } = require('hbs');
 
 var logged = false
-var name = null
-var img = null
-var level = null
-var id = null
-
-
+var loggedAsCashier = false
 
 
 //call dashboard
@@ -174,14 +169,14 @@ const verify_login = (req, res) => {
                 req.session.img = user.img;
                 req.session.id = user._id;
 
-                logged = true
+                if (user.level == "cashier") {
+                    loggedAsCashier = true
+                    res.redirect('/point-of-sale');
+                } else {
+                    logged = true
+                    res.redirect('/dashboard');
+                }
 
-                res.render('dashboard', {
-                    name: req.session.name,
-                    level: req.session.level,
-                    img: req.session.img,
-                    id: req.session.id,
-                })
             } else {
                 res.render("login", {
                     error: "Invalid Username or Password"
@@ -203,12 +198,23 @@ const verify_login = (req, res) => {
 const call_form = (req, res) => {
     try {
         if (logged == true) {
-            res.render('product_form', {
-                name: req.session.name,
-                level: req.session.level,
-                img: req.session.img,
-                id: req.session.id,
-            })
+            Product.find({}, 'product_number -_id', (err, product) => {
+                if (err) {
+                    res.send(err)
+                }
+                let lastID = product[product.length - 1]
+                req.session.lastNumber = lastID.product_number;
+
+                res.render('product_form', {
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
+                    lastNumber: req.session.lastNumber + 1
+                })
+
+            });
+
         } else {
             res.redirect('/')
         }
@@ -234,6 +240,28 @@ const adduser_form = (req, res) => {
     }
 }
 
+const point_of_sale = (req, res) => {
+    var date = new Date(Date.now())
+    var today = date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear()
+    try {
+        if (loggedAsCashier == true) {
+
+            res.render('point_of_sale', {
+                name: req.session.name,
+                level: req.session.level,
+                img: req.session.img,
+                id: req.session.id,
+                date: today,
+            })
+
+        } else {
+            res.redirect('/')
+        }
+    } catch {
+        res.redirect('/')
+    }
+}
+
 
 
 module.exports = {
@@ -246,5 +274,6 @@ module.exports = {
     login,
     logout,
     verify_login,
-    adduser_form
+    adduser_form,
+    point_of_sale
 }

@@ -22,8 +22,8 @@
     <script src="../js/script.js"></script>
 
     {{!-- links --}}
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -58,12 +58,17 @@
                                     value="{{user.email}}" readonly>
                             </div>
                             <div class="mt-2" style="white-space:nowrap">
-                                <label style="font-size: 25px;"><b><i class="fa fa-user"></i></b></label>
+                                <label style="font-size: 25px;"><b><i class="fas fa-user-shield"></i></b></label>
+                                <input name="level" style="width: 80%;" id="level" class="info-input" type="text"
+                                    value="{{user.level}}" readonly>
+                            </div>
+                            <div class="mt-2" style="white-space:nowrap">
+                                <label style="font-size: 25px;"><b><i class="fas fa-user-tag"></i></b></label>
                                 <input name="username" style="width: 81%;" id="username" class="info-input" type="text"
                                     value="{{user.username}}" readonly>
                             </div>
                             <div class="mt-2" style="white-space:nowrap">
-                                <label style="font-size: 25px;"><b><i class="fas fa-lock"></i></b></label>
+                                <label style="font-size: 25px;"><b><i class="fas fa-user-lock"></i></b></label>
                                 <input name="password" style="width: 80%;" id="password" class="info-input" type="text" value="{{user.password}}"
                                     readonly>
                             </div>

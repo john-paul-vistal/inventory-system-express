@@ -463,3 +463,14 @@ ul li {
     overflow: hidden;
     display: block;
 }
+
+
+/* //Clock */
+
+#date {
+    font-size: 20px;
+}
+
+#clock {
+    font-size: 20px;
+}

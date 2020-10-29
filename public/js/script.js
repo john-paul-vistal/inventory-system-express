@@ -13,8 +13,8 @@ $(document).ready(function() {
     //Logout
     $('#logout').click(function() {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You will be logged out to your accout!",
+            title: 'Are you sure you want to continue?',
+            text: "You will be signed out to your account!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -62,39 +62,36 @@ $(document).ready(function() {
         readURLblog(this);
     });
 
-    //SEARCH FOR BLOGS
-    $('#searchInput').on('keyup', function() {
+    //SEARCH FOR PRODUCT
+    $('#searchProduct').on('keyup', function() {
         var input, filter, cards, cardContainer, title, i;
-        input = document.getElementById("searchInput");
+        input = document.getElementById("searchProduct");
         filter = input.value.toUpperCase();
-        cardContainer = document.getElementById("blogRecords");
-        cards = cardContainer.getElementsByClassName("blog");
+        cardContainer = document.getElementById("productRecords");
+        cards = cardContainer.getElementsByClassName("product");
         for (i = 0; i < cards.length; i++) {
-            title = cards[i].querySelector(".card-content h5.title");
+            title = cards[i].querySelector(".card-body p.title");
             if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-                $(cards[i]).parent().fadeIn("slow");
                 $(cards[i]).parent().css('display', 'block')
             } else {
-                $(cards[i]).parent().fadeOut("slow");
                 $(cards[i]).parent().css('display', 'none')
             }
         }
 
     });
-    //SEARCH FOR ADMINS
-    $('#searchAdmin').on('keyup', function() {
+
+    //SEARCH FOR USERS
+    $('#searchUser').on('keyup', function() {
         var input, filter, cards, cardContainer, name, i;
-        input = document.getElementById("searchAdmin");
+        input = document.getElementById("searchUser");
         filter = input.value.toUpperCase();
-        cardContainer = document.getElementById("adminRecords");
-        cards = cardContainer.getElementsByClassName("admins");
+        cardContainer = document.getElementById("userRecords");
+        cards = cardContainer.getElementsByClassName("user");
         for (i = 0; i < cards.length; i++) {
             name = cards[i].querySelector(".card-body h4.name");
             if (name.innerText.toUpperCase().indexOf(filter) > -1) {
-                $(cards[i]).parent().fadeIn("slow");
                 $(cards[i]).parent().css('display', 'block')
             } else {
-                $(cards[i]).parent().fadeOut("slow");
                 $(cards[i]).parent().css('display', 'none')
             }
         }
@@ -133,6 +130,9 @@ $(document).ready(function() {
 
         $('#email').addClass('editable')
         $('#email').attr('readonly', false)
+
+        $('#level').addClass('editable')
+        $('#level').attr('readonly', false)
 
         $('#username').addClass('editable')
         $('#username').attr('readonly', false)
@@ -176,6 +176,39 @@ $(document).ready(function() {
 
         });
     });
+
+
+
+
+    //Clock
+    function currentTime() {
+        var date = new Date(); /* creating object of Date class */
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+
+        hour = updateTime(hour);
+        min = updateTime(min);
+        sec = updateTime(sec);
+
+        var midday = "AM";
+        midday = (hour >= 12) ? "PM" : "AM";
+
+        hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12) : hour);
+
+        document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday;
+        var t = setTimeout(function() { currentTime() }, 1000); /* setting timer */
+    }
+
+    function updateTime(k) {
+        if (k < 10) {
+            return "0" + k;
+        } else {
+            return k;
+        }
+    }
+
+    currentTime();
 
 
 }); //end code

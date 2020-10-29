@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point of Sale System</title>
+    <link rel="icon" href="./img/logo.png">
+
+    {{!-- custom css --}}
+    <link rel="stylesheet" href="./css/dash-card.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/w3css.css">
+
+    {{!-- bootstrap --}}
+    <link rel="stylesheet" href="./css/bootstrap/bootstrapcss.css">
+    <script src="./css/bootstrap/bootstrapjquery.js"></script>
+    <script src="./css/bootstrap/bootstrapproper.js"></script>
+    <script src="./css/bootstrap/bootstrap.js"></script>
+
+
+    {{!-- links --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {{!-- custom script --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/sales.js"></script>
+
+
+    <style>
+        .tableFixHead {
+            overflow-y: auto;
+            height: 600px;
+        }
+
+        .tableFixHead table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .tableFixHead th,
+        .tableFixHead td {
+            padding: 8px 16px;
+        }
+
+        .tableFixHead th {
+            position: sticky;
+            top: -1px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-light w3-deep-purple shadow-sm">
+        <div class="navbar-brand text-white" href="#">
+            <img src="./img/logo.png" width="30" height="30" alt="">
+            Shoppers Mart
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success mx-1 px-3 text-white"><i class="fa fa-envelope"></i></button>
+            <button class="btn btn-warning mx-1 px-3 mr-2 text-white"><i class="fa fa-bell"></i></button>
+            <div class="dropdown">
+                <button class="btn btn-primary pl-3 text-right text-white" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{name}}&nbsp;&nbsp;&nbsp;<i style="font-size: 25px;" class="fa fa-user"></i>
+                </button>
+                <div style="width: 400px;margin-left:-235px"
+                    class="dropdown-menu p-2 mt-2 shadow-lg rounded-lg border-0" aria-labelledby="dropdownMenuButton">
+                    <div class="row">
+                        <div class="col">
+                            <div style="width:130px;height:130px" class="ml-3 bg-primary rounded-circle text-center">
+                                <img style="width:130px;height:130px" class="mx-auto my-auto p-1 rounded-circle"
+                                    src="./img/profile/{{img}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col" style="margin-left:-40px">
+                            <p class="mt-1" style="font-size:23px;"><b>{{name}}</b></p>
+                            <p style="text-transform:uppercase;line-height:1px">{{level}}</p>
+                            <button class="btn btn-block btn-outline-primary mt-1">View Profile</button>
+                            <hr>
+                            <button id="logout" class="btn btn-block btn-outline-danger mb-2">Sign out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div style="width: 98%;" class="container-fluid d-flex  w3-white shadow-sm mt-2 py-3">
+        <div id="date"><i class="fa fa-calendar"></i> {{date}}&nbsp;&nbsp;&nbsp;<i class="fa fa-clock"></i>&nbsp;</div>
+        <div id="clock"></div>
+    </div>
+
+    <div class="container-fluid p-3">
+        <div class="row vertical-align mx-1">
+            <div class="col-md-8 p-1 rounded shadow rounded-lg w3-white mt-1">
+                <form action="">
+                    <div class="d-flex justify-content-start">
+                        <input style="width: 40%;" type="text" class="mt-1 form-control text-dark py-3"
+                            placeholder="Product number . . . ">
+                        <input style="width: 10%;" type="text" class="mt-1 ml-1 form-control text-dark py-3"
+                            placeholder="Quantity">
+                        <button class="btn btn-primary mx-1 px-4 mt-1 " onclick="addItem()">Add</button>
+                    </div>
+                </form>
+                <div class="tableFixHead mt-2 mb-1">
+                    <table class="table table mt-2 p-5" id="add_item-table">
+                        <thead class="thead-dark rounded">
+                            <tr>
+                                <th scope="col" var="ID">ID</th>
+                                <th scope="col" var="item">Item</th>
+                                <th scope="col" var="price">Price</th>
+                                <th scope="col" var="qty">Qty</th>
+                                <th scope="col" var="total">Total</th>
+                                <th scope="col" var="del">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>112233</td>
+                                <td>Korean Bag</td>
+                                <td>500</td>
+                                <td>1</td>
+                                <td>500</td>
+                                <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <button class="btn btn-danger px-3 py-2 mb-2"><i class="fa fa-trash"></i> Clear All</button>
+            </div>
+
+            <div class="col-md-4 p-1 rounded-lg">
+                <div style="height: 430px;" class="shadow-sm  w3-white container">
+                    <h3>Summary</h3>
+                    <hr>
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <div class="bg-primary rounded p-2">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h2 class="text-white">TOTAL</h2>
+                                    <h2 class="text-white">0.00</h2>
+                                    <input type="hidden" value="">
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="text-white">VAT</h5>
+                                    <h5 class="text-white">0.00</h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h6 class="text-white">NUMBER OF ITEMS</h6>
+                                    <h6 class="text-white">5</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for=""></label>
+                            <input type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
+                                placeholder="0.00"></input>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <button class="btn btn-block btn-danger py-3">Cancel Order</button>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <button class="btn btn-block btn-success py-3">Pay</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer bg-white text-center">
+                    <small>Nasipit Talamban, Cebu City</small>
+                    <br>
+                    <small>0958-6521-521</small>
+                    <br>
+                    <small>Vistal Company Corp.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    window.onbeforeunload = function() {
+        return "Dude, are you sure you want to leave? Think of the kittens!";
+    }
+</script>
+</body>
+
+</html>

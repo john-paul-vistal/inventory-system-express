@@ -5,6 +5,16 @@ const { __express } = require('hbs');
 
 
 
+//get_all product
+const get_all_products = (req, res) => {
+    Product.find({}, (err, products) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(products)
+    });
+}
+
 //search_products
 const get_product = (req, res) => {
     Product.findById(req.params.id, (err, product) => {
@@ -18,11 +28,28 @@ const get_product = (req, res) => {
     });
 }
 
+var number
+
+function getId() {
+
+    Product.find({}, 'product_number -_id', (err, product) => {
+        if (err) {
+            res.send(err)
+        }
+        let lastID = product[product.length - 1]
+        var number = lastID.product_number;
+    });
+}
+
+
+getId()
+
 //save_products
 const add_product = (req, res) => {
     var date = new Date(Date.now())
     var created_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
     var updated_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+
     let productToCreate = new Product({
         product_number: req.body.product_number,
         product_name: req.body.product_name,
@@ -35,6 +62,7 @@ const add_product = (req, res) => {
         created_by: req.body.userlogged,
         updated_by: req.body.userlogged
     });
+
     productToCreate.save((err, product) => {
         if (err) {
             res.send(err);
@@ -73,6 +101,7 @@ const delete_product = (req, res) => {
 
 
 module.exports = {
+    get_all_products,
     get_product,
     add_product,
     update_product,

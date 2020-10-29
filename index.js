@@ -54,7 +54,7 @@ Handlebars.registerHelper('ifEquals', function(val, options) {
     var fnTrue = options.fn,
         fnFalse = options.inverse;
 
-    return val == "Admin" ? fnTrue() : fnFalse();
+    return val == "admin" ? fnTrue() : fnFalse();
 });
 
 

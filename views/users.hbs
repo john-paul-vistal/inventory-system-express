@@ -22,8 +22,8 @@
     <script src="./js/script.js"></script>
 
     {{!-- links --}}
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -52,10 +52,11 @@
                     <p style="line-height:5px;text-transform:uppercase" class="text-white text-center">{{level}}</p>
                 </div>
                 <div class="w3-bar-block m-2 text-white">
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/dashboard"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
-                                class="fa fa-dashboard w3-margin-right"></i>Dashboard</button></a>
-
+                                class="fas fa-tachometer-alt w3-margin-right"></i>Dashboard</button></a>
+                    {{/ifEquals}}
                     <a style="text-decoration:none;color:white" href="/products"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fas fa-box-open w3-margin-right"></i>Product</button></a>
@@ -67,11 +68,11 @@
                     <a style="text-decoration:none;color:white" href="/sales"><button
                             class="w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-bar-chart w3-margin-right"></i>Sales</button></a>
-
+                    {{#ifEquals level}}
                     <a style="text-decoration:none;color:white" href="/users"><button
                             class="w3-blue w3-bar-item w3-button w3-hover-aqua py-3 rounded"><i
                                 class="fa fa-group w3-margin-right"></i>Users</button></a>
-
+                    {{/ifEquals}}
                 </div>
                 <div class="sidebar-footer card-footer">
                     <span class="text-white w3-small">&copy; Copyright 2020, John Paul Vistal</span>
@@ -87,27 +88,28 @@
                     <a href="/add-user"><button class="btn btn-primary px-3 py-2">Add User</button></a>
                 </div>
                 <div class="input-group mb-4 mt-2" style="width: 40%;">
-                    <input type="text" class="form-control" placeholder="Search users . . . ." aria-label="Username"
+                    <input id="searchUser" type="text" class="form-control" placeholder="Search users . . . ." aria-label="Username"
                         aria-describedby="basic-addon1">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                     </div>
                 </div>
                 <hr>
-                <div class="row mt-2">
+                <div id="userRecords" class="row mt-2">
                     {{#each users}}
                     <div class="col-md-4">
-                        <div class="card-counter user-info w3-deep-purple admins mt-2 mb-2" style="width:310px;height:385px">
+                        <div class="user card-counter user-info w3-deep-purple admins mt-2 mb-2"
+                            style="width:310px;height:385px">
                             <img style="height:170px" class="card-img-top rounded-top" src="/img/cover.jpg"
                                 alt="Card image cap">
                             <img class="rounded-circle ml-2 shadow bg-white p-1"
                                 style="width:120px;height:120px;position:relative;top:-60px;margin-bottom:0"
                                 src="/img/profile/{{this.img}}" alt="profile">
                             <div class="mr-1 mt-1" style="float:right">
-                                <p class="p-2 btn-danger rounded-circle fa fa-google w3-large"></p>
-                                <p class="p-2 btn-primary rounded-circle fa fa-instagram w3-large"></p>
-                                <p class="p-2 btn-success rounded-circle fa fa-linkedin w3-large"></p>
-                                <p class="p-2 btn-info rounded-circle fa fa-twitter w3-large"></p>
+                                <p class="p-2 btn-danger rounded-circle fab fa-google w3-large"></p>
+                                <p class="p-2 btn-primary rounded-circle fab fa-instagram w3-large"></p>
+                                <p class="p-2 btn-success rounded-circle fab fa-linkedin w3-large"></p>
+                                <p class="p-2 btn-info rounded-circle fab fa-twitter w3-large"></p>
                             </div>
                             <div style="margin-top:-70px" class="card-body text-left">
                                 <h4 class="name"><b>{{this.fullname}}</b></h4>
