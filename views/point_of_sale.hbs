@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     {{!-- custom script --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
     <script src="./js/sales.js"></script>
 
@@ -99,36 +100,29 @@
     <div class="container-fluid p-3">
         <div class="row vertical-align mx-1">
             <div class="col-md-8 p-1 rounded shadow rounded-lg w3-white mt-1">
-                <form action="">
-                    <div class="d-flex justify-content-start">
-                        <input style="width: 40%;" type="text" class="mt-1 form-control text-dark py-3"
-                            placeholder="Product number . . . ">
-                        <input style="width: 10%;" type="text" class="mt-1 ml-1 form-control text-dark py-3"
-                            placeholder="Quantity">
-                        <button class="btn btn-primary mx-1 px-4 mt-1 " onclick="addItem()">Add</button>
-                    </div>
-                </form>
+
+                <div class="d-flex justify-content-start">
+                    <input id="prodNum" style="width: 40%;" type="text" class="mt-1 form-control text-dark py-3"
+                        placeholder="Product number . . . ">
+                    <input id="qty" style="width: 10%;" type="text" class="mt-1 ml-1 form-control text-dark py-3"
+                        placeholder="Quantity">
+                    <button id="order" class="btn btn-primary mx-1 px-4 mt-1 ">Add</button>
+                </div>
+
                 <div class="tableFixHead mt-2 mb-1">
-                    <table class="table table mt-2 p-5" id="add_item-table">
+                    <table class="table table mt-2 p-5" id="orderTable">
                         <thead class="thead-dark rounded">
                             <tr>
-                                <th scope="col" var="ID">ID</th>
-                                <th scope="col" var="item">Item</th>
+                                <th scope="col" var="ID">Product #</th>
+                                <th scope="col" var="item">Item Name</th>
                                 <th scope="col" var="price">Price</th>
                                 <th scope="col" var="qty">Qty</th>
-                                <th scope="col" var="total">Total</th>
+                                <th scope="col" var="total">Subtotal</th>
                                 <th scope="col" var="del">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>112233</td>
-                                <td>Korean Bag</td>
-                                <td>500</td>
-                                <td>1</td>
-                                <td>500</td>
-                                <td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                            </tr>
+                        <tbody id="tableBody">
+                            {{!-- Product order will be prepended here --}}
                         </tbody>
                     </table>
                 </div>
@@ -137,42 +131,60 @@
             </div>
 
             <div class="col-md-4 p-1 rounded-lg">
-                <div style="height: 430px;" class="shadow-sm  w3-white container">
+                <div style="height: 550px;" class="shadow-sm  w3-white container">
                     <h3>Summary</h3>
                     <hr>
+                    <form action="/sales" method="post">
                     <div class="row mb-5">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mb-2">
+                           <input name="products" id="productOrderList" type="hidden" value="">
                             <div class="bg-primary rounded p-2">
-                                <div class="d-flex justify-content-between mt-1">
-                                    <h2 class="text-white">TOTAL</h2>
-                                    <h2 class="text-white">0.00</h2>
-                                    <input type="hidden" value="">
+                                <div class="d-flex justify-content-start">
+                                    <h6 class="text-white">INVOICE # :&nbsp;</h6>
+                                    <h6 id="invoiveNumberDisplay" class="text-white">0</h6>
+                                    <input id="invoiceNumber" name="invoiceNumber" type="hidden" value="">
+                                </div>
+                                <div class="d-flex justify-content-start">
+                                    <h6 class="text-white">NUMBER OF ITEMS :&nbsp;</h6>
+                                    <h6 id="itemCountDisplay" class="text-white">0</h6>
+                                    <input id="itemCount" name="itemCount" type="hidden" value="">
                                 </div>
                                 <div class="d-flex justify-content-between mt-1">
                                     <h5 class="text-white">VAT</h5>
                                     <h5 class="text-white">0.00</h5>
                                 </div>
-                                <div class="d-flex justify-content-between mt-1">
-                                    <h6 class="text-white">NUMBER OF ITEMS</h6>
-                                    <h6 class="text-white">5</h6>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="text-white">DISCOUNT</h5>
+                                    <h5 class="text-white">0.00</h5>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <h1 class="text-white">TOTAL</h1>
+                                    <h1 id="totalDisplay" class="text-white">0.00</h1>
+                                    <input id="total" name="total" type="hidden" value="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label for=""></label>
-                            <input type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
-                                placeholder="0.00"></input>
+                            <label style="line-height: 1px;" for=""><b>Cash Tendered</b></label>
+                            <input name="cashTendered" id="cashTendered" type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
+                                placeholder="0.00">
+                        </div>
+                        <div class="col-md-12">
+                            <label style="line-height: 1px;" for=""><b>Change</b></label>
+                            <input name="change" id="change" type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
+                                placeholder="0.00" readonly>
                         </div>
                         <div class="col-md-6 mt-4">
                             <button class="btn btn-block btn-danger py-3">Cancel Order</button>
                         </div>
                         <div class="col-md-6 mt-4">
-                            <button class="btn btn-block btn-success py-3">Pay</button>
+                            <button type="submit" id="pay" class="btn btn-block btn-success py-3">Pay</button>
                         </div>
                     </div>
-
+                </form>
                 </div>
-                <div class="card-footer bg-white text-center">
+                <div class="card-footer bg-white text-center shadow-sm">
                     <small>Nasipit Talamban, Cebu City</small>
                     <br>
                     <small>0958-6521-521</small>
@@ -183,10 +195,10 @@
         </div>
     </div>
     <script type="text/javascript">
-    window.onbeforeunload = function() {
-        return "Dude, are you sure you want to leave? Think of the kittens!";
-    }
-</script>
+        window.onbeforeunload = function () {
+            return "Dude, are you sure you want to leave? Think of the kittens!";
+        }
+    </script>
 </body>
 
 </html>

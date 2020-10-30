@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define the Rider model
+
 let ProductSchema = new Schema({
     product_number: { type: Number, required: true },
     product_name: { type: String, required: true },
@@ -16,5 +16,4 @@ let ProductSchema = new Schema({
 
 });
 
-// Export the Rider model
 module.exports = mongoose.model('Product', ProductSchema);

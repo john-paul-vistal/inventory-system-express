@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    //Tooltip
-    $("[data-toggle=tooltip]").tooltip();
+    // //Tooltip
+    // $("[data-toggle=tooltip]").tooltip();
 
     //Hide and Show of Sidebar
     $("#menu-toggle").click(function(e) {

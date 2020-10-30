@@ -61,7 +61,7 @@ Handlebars.registerHelper('ifEquals', function(val, options) {
 
 
 //Import routes
-const productRoutes = require('./routes/productRoutes');
+const productRoutes = require('./routes/allRoutes');
 app.use(productRoutes);
 
 

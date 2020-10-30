@@ -5,11 +5,12 @@ const Router = express.Router();
 const productController = require('../controllers/productCotroller');
 const viewsController = require('../controllers/viewsController');
 const userController = require('../controllers/userController');
+const salesController = require('../controllers/salesController');
 
 
 // PRODUCT ROUTES
 
-//search_product
+//get all product
 Router.get('/getAllProducts', productController.get_all_products);
 
 //search_product
@@ -80,6 +81,12 @@ Router.get('/add-user', viewsController.adduser_form);
 Router.get('/point-of-sale', viewsController.point_of_sale);
 
 
+//POS routes
+//get all sales
+Router.get('/getAllSales', salesController.get_all_sales);
+
+//add_sales
+Router.post('/sales', salesController.add_sales);
 
 
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define the Rider model
+
 let UsersSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
@@ -15,5 +15,5 @@ let UsersSchema = new Schema({
     updatedAt: { type: String, required: true }
 });
 
-// Export the Rider model
+
 module.exports = mongoose.model('Users', UsersSchema);
