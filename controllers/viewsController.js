@@ -1,5 +1,6 @@
 const Product = require('../models/product.model');
 const Users = require('../models/users.model');
+const Sales = require('../models/sales.model');
 
 const path = require('path');
 const { __express } = require('hbs');
@@ -90,13 +91,24 @@ const call_stock = (req, res) => {
 const call_sales = (req, res) => {
 
     try {
+
         if (logged == true) {
-            res.render('sales', {
-                name: req.session.name,
-                level: req.session.level,
-                img: req.session.img,
-                id: req.session.id,
+            Sales.find({}, (err, saleRecord) => {
+                if (err) {
+                    res.send(err)
+                }
+
+                res.render('sales', {
+                    salesRecord: saleRecord,
+                    name: req.session.name,
+                    level: req.session.level,
+                    img: req.session.img,
+                    id: req.session.id,
+
+                });
+
             });
+
         } else {
             res.redirect('/')
         }

@@ -57,6 +57,12 @@ Handlebars.registerHelper('ifEquals', function(val, options) {
     return val == "admin" ? fnTrue() : fnFalse();
 });
 
+Handlebars.registerHelper('getDate', function(val, options) {
+    let date = new Date(val)
+    var dateRecorded = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
+    return dateRecorded
+});
+
 
 
 

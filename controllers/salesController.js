@@ -31,27 +31,24 @@ const get_sales = (req, res) => {
 
 //save_products
 const add_sales = (req, res) => {
-    var date = new Date(Date.now())
-    var created_at = date.getMonth() + 1 + '-' + date.getDate() + '-' + date.getFullYear() + ' :: ' + date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds();
 
-    console.log(req.body)
+    let productOrderList = JSON.parse(req.body.products);
 
     let salesToCreate = new Sales({
         invoiceNumber: req.body.invoiceNumber,
-        numberOfItems: req.body.numberOfItems,
+        numberOfItems: req.body.itemCount,
         total: req.body.total,
         cashTendered: req.body.cashTendered,
         change: req.body.change,
-        products: req.body.products,
-        dateRecorded: created_at
+        products: productOrderList,
+        cashier: req.body.cashier
     });
 
     salesToCreate.save((err, sales) => {
         if (err) {
             res.send(err);
         }
-        res.send(sales)
-            // res.redirect('/point-of-sale')
+        res.redirect('/point-of-sale')
 
     });
 }

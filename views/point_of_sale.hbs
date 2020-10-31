@@ -53,6 +53,12 @@
             top: -1px;
             background: #eee;
         }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -102,10 +108,10 @@
             <div class="col-md-8 p-1 rounded shadow rounded-lg w3-white mt-1">
 
                 <div class="d-flex justify-content-start">
-                    <input id="prodNum" style="width: 40%;" type="text" class="mt-1 form-control text-dark py-3"
+                    <input id="prodNum" style="width: 40%;" type="number" class="mt-1 form-control text-dark py-3"
                         placeholder="Product number . . . ">
-                    <input id="qty" style="width: 10%;" type="text" class="mt-1 ml-1 form-control text-dark py-3"
-                        placeholder="Quantity">
+                    <input id="qty" style="width: 20%;" type="number" class="mt-1 ml-1 form-control text-dark py-3"
+                        placeholder="Quantity. . .">
                     <button id="order" class="btn btn-primary mx-1 px-4 mt-1 ">Add</button>
                 </div>
 
@@ -135,54 +141,57 @@
                     <h3>Summary</h3>
                     <hr>
                     <form action="/sales" method="post">
-                    <div class="row mb-5">
-                        <div class="col-md-12 mb-2">
-                           <input name="products" id="productOrderList" type="hidden" value="">
-                            <div class="bg-primary rounded p-2">
-                                <div class="d-flex justify-content-start">
-                                    <h6 class="text-white">INVOICE # :&nbsp;</h6>
-                                    <h6 id="invoiveNumberDisplay" class="text-white">0</h6>
-                                    <input id="invoiceNumber" name="invoiceNumber" type="hidden" value="">
-                                </div>
-                                <div class="d-flex justify-content-start">
-                                    <h6 class="text-white">NUMBER OF ITEMS :&nbsp;</h6>
-                                    <h6 id="itemCountDisplay" class="text-white">0</h6>
-                                    <input id="itemCount" name="itemCount" type="hidden" value="">
-                                </div>
-                                <div class="d-flex justify-content-between mt-1">
-                                    <h5 class="text-white">VAT</h5>
-                                    <h5 class="text-white">0.00</h5>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="text-white">DISCOUNT</h5>
-                                    <h5 class="text-white">0.00</h5>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between">
-                                    <h1 class="text-white">TOTAL</h1>
-                                    <h1 id="totalDisplay" class="text-white">0.00</h1>
-                                    <input id="total" name="total" type="hidden" value="">
+                        <div class="row mb-5">
+                            <div class="col-md-12 mb-2">
+                                <input type="hidden" name="cashier" id="" value="{{name}}">
+                                <input name="products" id="productOrderList" type="hidden" value="">
+                                <div class="bg-primary rounded p-2">
+                                    <div class="d-flex justify-content-start">
+                                        <h6 class="text-white">INVOICE # :&nbsp;</h6>
+                                        <h6 id="invoiveNumberDisplay" class="text-white">0</h6>
+                                        <input id="invoiceNumber" name="invoiceNumber" type="hidden" value="">
+                                    </div>
+                                    <div class="d-flex justify-content-start">
+                                        <h6 class="text-white">NUMBER OF ITEMS :&nbsp;</h6>
+                                        <h6 id="itemCountDisplay" class="text-white">0</h6>
+                                        <input id="itemCount" name="itemCount" type="hidden" value="">
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1">
+                                        <h5 class="text-white">VAT</h5>
+                                        <h5 class="text-white">0.00</h5>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="text-white">DISCOUNT</h5>
+                                        <h5 class="text-white">0.00</h5>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <h1 class="text-white">TOTAL</h1>
+                                        <h1 id="totalDisplay" class="text-white">0.00</h1>
+                                        <input id="total" name="total" type="hidden" value="">
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <label style="line-height: 1px;" for=""><b>Cash Tendered</b></label>
+                                <input name="cashTendered" id="cashTendered" type="number"
+                                    class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
+                                    placeholder="0.00" min="0" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label style="line-height: 1px;" for=""><b>Change</b></label>
+                                <input name="change" id="change" type="number"
+                                    class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
+                                    placeholder="0.00" min="0" readonly required>
+                            </div>
+                            <div class="col-md-6 mt-4">
+                                <button class="btn btn-block btn-danger py-3">Cancel Order</button>
+                            </div>
+                            <div class="col-md-6 mt-4">
+                                <button type="submit" id="pay" class="btn btn-block btn-success py-3">Pay</button>
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <label style="line-height: 1px;" for=""><b>Cash Tendered</b></label>
-                            <input name="cashTendered" id="cashTendered" type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
-                                placeholder="0.00">
-                        </div>
-                        <div class="col-md-12">
-                            <label style="line-height: 1px;" for=""><b>Change</b></label>
-                            <input name="change" id="change" type="text" class="form-control bg-default  py-3 px-3 text-dark text-right py-4"
-                                placeholder="0.00" readonly>
-                        </div>
-                        <div class="col-md-6 mt-4">
-                            <button class="btn btn-block btn-danger py-3">Cancel Order</button>
-                        </div>
-                        <div class="col-md-6 mt-4">
-                            <button type="submit" id="pay" class="btn btn-block btn-success py-3">Pay</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
                 <div class="card-footer bg-white text-center shadow-sm">
                     <small>Nasipit Talamban, Cebu City</small>

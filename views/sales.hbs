@@ -99,21 +99,23 @@
                             <tr>
                                 <th>Invoice #</th>
                                 <th>Total</th>
-                                <th>Cash Rendered</th>
+                                <th>Cash Tendered</th>
                                 <th>Change</th>
                                 <th>Cashier</th>
                                 <th>Recorded Date</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each salesRecord}}
                             <tr>
-                                <td>115566</td>
-                                <td>500</td>
-                                <td>1000</td>
-                                <td>500</td>
-                                <td>Antonette Biore</td>
-                                <td>10-12-2020</td>
+                                <td>{{this.invoiceNumber}}</td>
+                                <td class="text-center">{{this.total}}</td>
+                                <td class="text-center">{{this.cashTendered}}</td>
+                                <td class="text-center">{{this.change}}</td>
+                                <td>{{this.cashier}}</td>
+                                <td>{{getDate this.dateRecorded}}</td>
                             </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
