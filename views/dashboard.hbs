@@ -18,19 +18,19 @@
     <script src="./css/bootstrap/bootstrapproper.js"></script>
     <script src="./css/bootstrap/bootstrap.js"></script>
 
-    {{!-- custom script --}}
-    <script src="./js/script.js"></script>
 
     {{!-- links --}}
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{!-- custom script --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="./js/script.js"></script>
 
 
 </head>
 
-<body>
+<body class="bg-light">
     <div id="wrapper">
         <nav id="header" class="navbar navbar-inverse navbar-fixed-top w3-deep-purple fixed-top" role="navigation">
             <a id="menu-toggle" href="#" class="btn toggle w3-hover-teal ml-3">
@@ -87,24 +87,8 @@
             <div class="page-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div style="height:100%" class="card-counter primary">
-                                <img style="width:350px;margin-left: 50px" src="" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div style="height:100%" class="card-counter success">
-                                <img style="width:350px;margin-left: 50px" src="" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container mt-4">
-                    <div class="row">
                         <div class="col-md-3">
-                            <div class="card-counter primary">
+                            <div class="card-counter primary shadow">
                                 <i class="	fas fa-box-open"></i>
                                 <span class="count-numbers">10</span>
                                 <span class="count-name">Products</span>
@@ -112,33 +96,52 @@
                         </div>
 
                         <div class="col-md-3">
-                            <div class="card-counter success">
-                                <i class="fa fa-comments"></i>
+                            <div class="card-counter success shadow">
+                                <i class="fa fa-bell"></i>
                                 <span class="count-numbers">10</span>
-                                <span class="count-name">Comments</span>
+                                <span class="count-name">Low Stock</span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="card-counter danger">
+                            <div class="card-counter danger shadow">
                                 <i class="fa fa-book"></i>
                                 <span class="count-numbers">10</span>
-                                <span class="count-name">Published</span>
+                                <span class="count-name">Sales Recorded</span>
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <div class="card-counter info">
+                            <div class="card-counter info shadow">
                                 <i class="fa fa-users"></i>
-                                <span class="count-numbers">10</span>
-                                <span class="count-name">Admins</span>
+                                <span class="count-numbers ">10</span>
+                                <span class="count-name">Employee</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="container mt-4 mb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="height:100%" class="card-counter bg-white shadow">
+                                <canvas id="myChart1"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <div style="height:100%" class="card-counter bg-white shadow">
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    <script src="./js/charts.js"></script>
+
 </body>
 
 </html>
