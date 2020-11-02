@@ -85,6 +85,7 @@ Router.get('/point-of-sale', viewsController.point_of_sale);
 //get all sales
 Router.get('/getAllSales', salesController.get_all_sales);
 
+
 //add_sales
 Router.post('/sales', salesController.add_sales);
 

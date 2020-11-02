@@ -15,6 +15,7 @@ const get_all_sales = (req, res) => {
     });
 }
 
+
 //search_products
 const get_sales = (req, res) => {
     Product.findById(req.params.id, (err, product) => {

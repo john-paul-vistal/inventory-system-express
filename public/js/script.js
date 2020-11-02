@@ -196,7 +196,7 @@ $(document).ready(function() {
 
         hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12) : hour);
 
-        document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday;
+        $("#clock").text(hour + " : " + min + " : " + sec + " " + midday);
         var t = setTimeout(function() { currentTime() }, 1000); /* setting timer */
     }
 

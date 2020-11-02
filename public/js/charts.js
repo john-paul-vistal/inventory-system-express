@@ -1,12 +1,35 @@
+let top_products
+let count = {}
+let counts = []
+let value = []
+$.ajax('/getAllSales', {
+    success: function(data, status, xhr) {
+        data.forEach(element => {
+            console.log(element.total)
+            element.products.forEach(prod => {
+                count[prod.productName] = count[prod.productName] ? count[prod.productName] + 1 : 1
+                if (counts.indexOf(prod.productName) === -1) {
+                    counts.push(prod.productName)
+                }
+
+            });
+        });
+        for (const key in count) {
+            value.push(count[key])
+        }
+    }
+});
+
+
+
 var ctx1 = document.getElementById('myChart1').getContext('2d')
 
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: counts,
         datasets: [{
-            label: '# of Votes',
-            data: [12, 20, 3, 5, 2, 3],
+            data: value,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -40,7 +63,7 @@ var myChart1 = new Chart(ctx1, {
         },
         animation: {
             duration: 5000,
-            easing: 'easeInQuad'
+            easing: 'linear'
         },
         legend: {
             display: false
