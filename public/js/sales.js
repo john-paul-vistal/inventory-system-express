@@ -55,7 +55,7 @@ $(document).ready(function() {
             let product = products.find(products => products.product_number == productNumber);
 
             if (product != undefined && product.qty > 0) {
-                orderList.push({ 'id': orderList.length, 'productNumber': product.product_number, 'productName': product.product_name, 'price': product.price, 'qty': quantity, 'total': quantity * product.price });
+                orderList.push({ 'id': orderList.length, 'prodID': product._id, 'productNumber': product.product_number, 'productName': product.product_name, 'price': product.price, 'qty': quantity, 'total': quantity * product.price });
 
             } else {
                 Swal.fire({

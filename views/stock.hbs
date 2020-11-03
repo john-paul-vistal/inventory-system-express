@@ -22,7 +22,7 @@
     <script src="./js/script.js"></script>
 
     {{!-- links --}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -113,7 +113,7 @@
                                 <td>{{this.qty}}</td>
                                 <td>{{this.created_at}}</td>
                                 <td>{{this.updated_at}}</td>
-                                <td><button class="btn btn-sm btn-primary px-3">+</button></td>
+                                <td style="text-align:center"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -121,6 +121,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

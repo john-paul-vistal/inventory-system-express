@@ -67,6 +67,11 @@ const call_stock = (req, res) => {
             var udate = new Date(products.updated_at)
             var created_at = cdate.getMonth() + 1 + '-' + cdate.getDate() + '-' + cdate.getFullYear() + ' :: ' + cdate.getHours() + ' : ' + cdate.getMinutes() + ' : ' + cdate.getSeconds();
             var updated_at = udate.getMonth() + 1 + '-' + udate.getDate() + '-' + udate.getFullYear() + ' :: ' + udate.getHours() + ' : ' + udate.getMinutes() + ' : ' + udate.getSeconds();
+
+            products.sort(function(a, b) {
+                return a.qty - b.qty;
+            });
+
             if (logged == true) {
                 res.render('stock', {
                     products: products,
@@ -83,7 +88,7 @@ const call_stock = (req, res) => {
         } catch {
             res.redirect('/')
         }
-    })
+    });
 
 }
 

@@ -1,4 +1,5 @@
 const Sales = require('../models/sales.model');
+const Product = require('../models/product.model');
 
 const path = require('path');
 const { __express } = require('hbs');
@@ -33,6 +34,21 @@ const get_sales = (req, res) => {
 const add_sales = (req, res) => {
 
     let productOrderList = JSON.parse(req.body.products);
+
+    productOrderList.forEach(element => {
+
+        Product.findByIdAndUpdate(element.prodID, { $inc: { qty: -element.qty } }, { new: true }, (err, updatedProduct) => {
+            if (err) {
+                res.send(err)
+            }
+        });
+    })
+
+
+
+
+
+
 
     let salesToCreate = new Sales({
         invoiceNumber: req.body.invoiceNumber,
