@@ -79,26 +79,6 @@ $(document).ready(function() {
         }
     }
 
-
-    function checkAmountTendered() {
-        let total = $('#total').val()
-        let cashTendered = $('#cashTendered').val()
-
-        if (cashTendered < total) {
-            alert("Not Enough Amount!")
-        } else {
-            Swal.fire({
-                position: 'top-start',
-                icon: 'success',
-                title: 'Transaction Saved!',
-                text: 'Thank you! Please come again',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-
-    }
-
     //remove item in table 
     $('#orderTable').on('click', '.remove', function() {
         Swal.fire({
@@ -147,9 +127,55 @@ $(document).ready(function() {
 
     })
 
-    $('#cashTendered').keyup(function(e) {
-        if (e.keyCode == 13) {
-            checkAmountTendered()
+    $('#transaction').submit(function(e) {
+        let total = $('#total').val()
+        let cashTendered = $('#cashTendered').val()
+
+        if (cashTendered < total) {
+            Swal.fire({
+                position: 'middle',
+                icon: 'error',
+                title: 'Not enough amount',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            e.preventDefault()
+        } else {
+            Swal.fire({
+                position: 'top-start',
+                icon: 'success',
+                title: 'Transaction Saved!',
+                text: 'Thank you! Please come again',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    })
+
+
+    $('#pay').click(function(e) {
+
+        let total = $('#total').val()
+        let cashTendered = $('#cashTendered').val()
+
+        if (cashTendered < total) {
+            Swal.fire({
+                position: 'middle',
+                icon: 'error',
+                title: 'Not enough amount',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            e.preventDefault()
+        } else {
+            Swal.fire({
+                position: 'top-start',
+                icon: 'success',
+                title: 'Transaction Saved!',
+                text: 'Thank you! Please come again',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
 
     })

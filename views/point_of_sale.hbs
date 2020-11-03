@@ -85,7 +85,7 @@
                                     src="./img/profile/{{img}}" alt="">
                             </div>
                         </div>
-                        <div class="col" style="margin-left:-40px">
+                        <div class="col"  style="margin-left:-40px">
                             <p class="mt-1" style="font-size:23px;"><b>{{name}}</b></p>
                             <p style="text-transform:uppercase;line-height:1px">{{level}}</p>
                             <button class="btn btn-block btn-outline-primary mt-1">View Profile</button>
@@ -140,7 +140,7 @@
                 <div style="height: 550px;" class="shadow-sm  w3-white container">
                     <h3>Summary</h3>
                     <hr>
-                    <form action="/sales" method="post">
+                    <form id="transaction" action="/sales" method="post">
                         <div class="row mb-5">
                             <div class="col-md-12 mb-2">
                                 <input type="hidden" name="cashier" id="" value="{{name}}">
@@ -168,7 +168,7 @@
                                     <div class="d-flex justify-content-between">
                                         <h1 class="text-white">TOTAL</h1>
                                         <h1 id="totalDisplay" class="text-white">0.00</h1>
-                                        <input id="total" name="total" type="hidden" value="">
+                                        <input id="total" name="total" type="hidden" value="0">
                                     </div>
                                 </div>
                             </div>
