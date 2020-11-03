@@ -58,7 +58,11 @@ $(document).ready(function() {
                 orderList.push({ 'id': orderList.length, 'productNumber': product.product_number, 'productName': product.product_name, 'price': product.price, 'qty': quantity, 'total': quantity * product.price });
 
             } else {
-                alert("Product not found!")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Product Not Found!',
+                    timer: 1000
+                })
             }
 
             $('#prodNum').val('')
@@ -67,7 +71,11 @@ $(document).ready(function() {
             getTotal()
 
         } else {
-            alert("Enter product number!")
+            Swal.fire({
+                icon: 'info',
+                title: 'Please enter the product number!',
+                timer: 1000
+            })
         }
     }
 
@@ -78,19 +86,36 @@ $(document).ready(function() {
 
         if (cashTendered < total) {
             alert("Not Enough Amount!")
+        } else {
+            Swal.fire({
+                position: 'top-start',
+                icon: 'success',
+                title: 'Transaction Saved!',
+                text: 'Thank you! Please come again',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
 
     }
 
-
+    //remove item in table 
     $('#orderTable').on('click', '.remove', function() {
-        let res = confirm("Remove this Item")
-        if (res == true) {
-            let index = $(this).parents('tr').children('.prodIndx').val();
-            orderList.splice(index, 1)
-            display()
-            getTotal()
-        }
+        Swal.fire({
+            title: 'Are you sure you want to remove this item?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.value == true) {
+                let index = $(this).parents('tr').children('.prodIndx').val();
+                orderList.splice(index, 1)
+                display()
+                getTotal()
+            }
+        })
     });
 
 
@@ -116,7 +141,6 @@ $(document).ready(function() {
 
 
     $('#cashTendered').keyup(function(e) {
-
         let total = $('#total').val()
         let cashTendered = $('#cashTendered').val()
         $('#change').val(cashTendered - total)

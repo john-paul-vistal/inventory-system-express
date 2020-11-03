@@ -5,6 +5,16 @@ const { __express } = require('hbs');
 
 
 
+//get All user
+const get_all_user = (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(users)
+    });
+}
+
 //search_products
 const get_user = (req, res) => {
     User.findById(req.params.id, (err, user) => {
@@ -77,6 +87,7 @@ const delete_user = (req, res) => {
 
 
 module.exports = {
+    get_all_user,
     get_user,
     add_user,
     update_user,

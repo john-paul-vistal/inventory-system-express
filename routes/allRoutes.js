@@ -29,16 +29,19 @@ Router.get('/product/delete/:id', productController.delete_product);
 
 // USERS ROUTES
 
-//search_product
+//getAlluser
+Router.get('/getAllUsers', userController.get_all_user);
+
+//search_user
 Router.get('/user/:id', userController.get_user);
 
-//add_product
+//add_user
 Router.post('/user', userController.add_user);
 
-//update_product
+//update_user
 Router.post('/user/:id', userController.update_user);
 
-//delete_product 
+//delete_user
 Router.get('/user/delete/:id', userController.delete_user);
 
 
