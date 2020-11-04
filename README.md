@@ -1,5 +1,13 @@
 # INVENTORY SYSTEM AND POS SYSTEM
 
+## Members
+```
+-John Paul Vistal
+-Antonette Biore
+-Rose Marry Goyo
+
+```
+
 ## Set up the project
 ```
 npm install
