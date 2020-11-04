@@ -86,7 +86,7 @@
             <div class="page-content">
                 <div class="container">
                     <div class="input-group mb-2 mt-2 float-right" style="width: 40%;">
-                        <input type="text" class="form-control" placeholder="Search record . . . ."
+                        <input id="searchSales" type="text" class="form-control" placeholder="Search record . . . ."
                             aria-label="Username" aria-describedby="basic-addon1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -94,9 +94,9 @@
                     </div>
                     <h2>Sales Records</h2>
                     <hr>
-                    <table class="table">
+                    <table id="salesRecord" class="table">
                         <thead class="thead-light">
-                            <tr>
+                            <tr class="record">
                                 <th>Invoice #</th>
                                 <th>Total</th>
                                 <th>Cash Tendered</th>
