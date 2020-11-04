@@ -14,6 +14,7 @@ create three collections
 
 
 >>Insert this to users collection
+{
 "username" : "sample",
 "password" : "p@ssw0rd",
 "level" : "admin",
@@ -24,9 +25,11 @@ create three collections
 "img" : "default1.jpg",
 "createdAt" : "01-01-2000",
 "updatedAt" : "01-01-2000"
+}
 Add one user with admin user level before you delete the initial user
 
 >>Insert this to product Collection
+{
 "img" : "shoes-3.png",
 "product_number" : 10000000,
 "product_name" : "Sample Product 1",
@@ -37,9 +40,11 @@ Add one user with admin user level before you delete the initial user
 "updated_at" : "11-3-2020 :: 14 : 0 : 39",
 "created_by" : "Initial User",
 "updated_by" : "Initial User"
+}
 Add one product before you delete the initial product
 
->>Insert this to sales
+>>Insert this to sales Collection
+{
  "products" : [{
         "id" : 0,
         "prodID" : "5f9966d4f85da70bc46363ed",
@@ -54,9 +59,18 @@ Add one product before you delete the initial product
     "total" : 0,
     "cashTendered" : 0,
     "change" : 0
+}
 
 Add one transaction record before deleting the initial sales record.
 
+```
+
+## User Level Scope
+
+```
+Admin - Access All the fields in Inventory System
+Manager - Can only access products , stocks and sales
+Cashier -  Can access the POS
 ```
 
 
@@ -64,7 +78,3 @@ Add one transaction record before deleting the initial sales record.
 ```
 npm start
 ```
-
-
-## Let's start
-You will find the instructions in the index.js file.
